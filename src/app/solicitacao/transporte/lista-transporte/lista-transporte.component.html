@@ -1,0 +1,27 @@
+<p>Lista Solicitações de Veículo</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Solicitate</th>
+      <th scope="col">Lotação</th>
+      <th scope="col">Data</th>
+      <th scope="col">Parecer</th>
+      <th scope="col">Lotação Tratamento</th>
+    </tr>
+    </thead>
+    <tbody>
+
+       
+   
+    <tr *ngFor="let solicitacao of solicitacoes.values">
+        <td>{{ solicitacao.id }}</td>
+        <td>{{ solicitacao.solicitanteTratamentoNome}}</td>
+        <td>{{ solicitacao.solitanteLotacaoNome }}</td>
+        <td>{{ solicitacao.dataCadastro }}</td>
+        <td>{{ solicitacao.parecer }}</td>
+        <td>{{ solicitacao.lotacaoTratamentoNome }}</td> 
+    </tr>
+    </tbody>
+  </table>
