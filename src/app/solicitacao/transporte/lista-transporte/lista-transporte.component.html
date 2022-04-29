@@ -1,27 +1,39 @@
-<p>Lista Solicitações de Veículo</p>
+<div class="container main-container">
+<h2>Lista Solicitações de Veículo</h2>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Solicitate</th>
-      <th scope="col">Lotação</th>
-      <th scope="col">Data</th>
-      <th scope="col">Parecer</th>
-      <th scope="col">Lotação Tratamento</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="row text-center">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Solicitante</th>
+            <th scope="col">Lotação Solicitante</th>
+            <th scope="col">Data</th>
+            <th scope="col">Parecer</th>
+            <th scope="col">Reponsável</th>      
+            <th scope="col">Lotação Reponsável</th>
+            <th scope="col">Código do Status</th>
+            <th scope="col">Nome do Status</th>
+            <th scope="col">Opções</th>
+            </tr>
+            </thead>
+            <tbody>
 
-       
-   
-    <tr *ngFor="let solicitacao of solicitacoes.values">
-        <td>{{ solicitacao.id }}</td>
-        <td>{{ solicitacao.solicitanteTratamentoNome}}</td>
-        <td>{{ solicitacao.solitanteLotacaoNome }}</td>
-        <td>{{ solicitacao.dataCadastro }}</td>
-        <td>{{ solicitacao.parecer }}</td>
-        <td>{{ solicitacao.lotacaoTratamentoNome }}</td> 
-    </tr>
-    </tbody>
-  </table>
+            
+        
+            <tr *ngFor="let solicitacao of solicitacoes">
+                <td>{{ solicitacao.id }}</td>
+                <td>{{ solicitacao.solicitanteNome}}</td>
+                <td>{{ solicitacao.solitanteLotacaoNome }}</td>
+                <td>{{ solicitacao.dataCadastro }}</td>
+                <td>{{ solicitacao.parecer }}</td>
+                <td>{{ solicitacao.solicitanteTratamentoNome}}</td>        
+                <td>{{ solicitacao.lotacaoTratamentoNome }}</td> 
+                <td>{{ solicitacao.solicitacaoStatus }}</td> 
+                <td>{{ solicitacao.solicitacaoStatusNome }}</td> 
+                <td><button class="btn btn-primary"> Visualizar </button> </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+</div>

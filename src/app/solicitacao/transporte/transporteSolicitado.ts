@@ -1,11 +1,20 @@
 export class transporteSolicitado {
     id: number;
-    solicitanteTratamentoNome: string;
+    solicitanteNome:string;
     solitanteLotacaoNome: string;
     dataCadastro: Date;
     parecer: string;
     lotacaoTratamentoNome: string;
+    solicitanteTratamentoNome: string;
+    solicitacaoStatus: number;
+    solicitacaoStatusNome: string;
 
+}
+
+
+export class transporteDTO{
+    id:number;
+    values: transporteSolicitado[];
 }
 
 // public int Id { get; set; }

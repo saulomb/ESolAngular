@@ -22,7 +22,7 @@ export class ListaTransporteComponent implements OnInit {
       .subscribe(
         solicitacoes =>{
           this.solicitacoes = solicitacoes;
-          console.log("Carregando solicitações:",solicitacoes["values"]);
+          console.log("Carregando solicitações:",solicitacoes);
         },
         error=>console.log(error)
         
