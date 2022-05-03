@@ -31,7 +31,10 @@
                 <td>{{ solicitacao.lotacaoTratamentoNome }}</td> 
                 <td>{{ solicitacao.solicitacaoStatus }}</td> 
                 <td>{{ solicitacao.solicitacaoStatusNome }}</td> 
-                <td><button class="btn btn-primary"> Visualizar </button> </td>
+                <td>
+                    <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao', solicitacao.id]">Detalhe</a> -->
+                    <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Lotacao } from '../lotacao';
 import { TransporteService } from '../transporte.service';
 import { transporteSolicitado } from '../transporteSolicitado';
 
@@ -14,6 +15,7 @@ export class ListaTransporteComponent implements OnInit {
   {   }
 
   public solicitacoes: transporteSolicitado[];
+  public lotacoes: Lotacao[];
 
 
 
@@ -23,6 +25,16 @@ export class ListaTransporteComponent implements OnInit {
         solicitacoes =>{
           this.solicitacoes = solicitacoes;
           console.log("Carregando solicitações:",solicitacoes);
+        },
+        error=>console.log(error)
+        
+      );
+
+      this.transporteServico.obterLotacoes()
+      .subscribe(
+        lotacoes =>{
+          this.lotacoes = lotacoes;
+          console.log("Carregando lotações:",lotacoes);
         },
         error=>console.log(error)
         

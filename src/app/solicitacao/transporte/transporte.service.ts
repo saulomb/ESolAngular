@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import {HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
-import { transporteDTO, transporteSolicitado } from "./transporteSolicitado";
+import { transporteSolicitado } from "./transporteSolicitado";
+import { Lotacao } from "./lotacao";
+import { DetalheSolicitacao } from "./detalheSolicitacao";
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +19,15 @@ export class TransporteService {
           
           return this.http.get<transporteSolicitado[]>(this.UrlServiceV1 +"transporte/solicitacoes/16");
            
+      }
+
+      obterLotacoes(): Observable<Lotacao[]> {
+          
+        return this.http.get<Lotacao[]>(this.UrlServiceV1 +"transporte/lotacoes");
+      }
+
+      obterDetalheSolicitacao(): Observable<DetalheSolicitacao> {
+            
+        return this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/1");
       }
 }
