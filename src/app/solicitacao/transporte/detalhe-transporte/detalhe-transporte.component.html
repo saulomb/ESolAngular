@@ -9,18 +9,18 @@
   </div>
 
   <div class="form-group">
-    <label class="col-md-2 control-label">Setor</label>
+    <label class="col-md-2 control-label">Setor/Nome</label>
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
           <b>{{detalheSolicitacao.cadastroUnidadeSigla}}</b> -
-          {{detalheSolicitacao.cadastroUnidadeDescicao}}
+          {{detalheSolicitacao.cadastroFuncionarioNome}}
         </li>
       </ul>
     </div>
   </div>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="CodRequisitante" class="col-md-2 control-label">Cadastrado por</label>
     <div class="col-md-8">
       <ul class="list-group">
@@ -29,7 +29,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
 
   <div class="form-group">
     <label class="col-md-2 control-label">Data de cadastro</label>
@@ -37,6 +37,17 @@
       <ul class="list-group">
         <li class="list-group-item">
            {{detalheSolicitacao.cadastroData}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-2 control-label">Data de envio para o gestor</label>
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li class="list-group-item">
+           {{detalheSolicitacao.cadastroDataEnvioGestor}}
         </li>
       </ul>
     </div>
@@ -54,70 +65,6 @@
   </div>
 
 
-  <!-- <div class="row">
-    <div class="col-md-12" style="text-align: center;">
-      <h3>Responsável</h3>
-    </div>
-  </div>
-
-  <br style="clear: both;"/>
-
-  <div class="form-group">
-    <label for="UndCodRequisitante" class="col-md-2 control-label">Setor</label>
-    <div class="col-md-8">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <b>{{detalheSolicitacao.unidadeGestorSigla}}</b> -
-          {{detalheSolicitacao.unidadeGestorDescicao}}
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="CodRequisitante" class="col-md-2 control-label">Responsável</label>
-    <div class="col-md-8">
-      <ul class="list-group">
-        <li class="list-group-item">
-          {{detalheSolicitacao.funcionarioGestorNome}}
-        </li>
-      </ul>
-    </div>
-  </div> -->
-
-  <!-- <div class="row">
-    <div class="col-md-12" style="text-align: center;">
-      <h3>Solicitação</h3>
-    </div>
-  </div>
-
-  <br style="clear: both;"/>
-
-  <div class="form-group">
-    <label for="CodSolServTab" class="col-md-2 control-label">Serviço</label>
-    <div class="col-md-8">
-      <ul class="list-group">
-        <li class="list-group-item">
-          {{detalheSolicitacao.servicoDescricao}}
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="UndCodTratamento" class="col-md-2 control-label">Unidade de Tratamento</label>
-    <div class="col-md-8">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <b>{{detalheSolicitacao.unidadeTratamentoSigla}}</b> -
-          {{detalheSolicitacao.unidadeTratamentoDescicao}}
-         
-        </li>
-      </ul>
-    </div>
-  </div> -->
-
-
       <div class="row">
         <div class="col-md-12" style="text-align: center;">
           <h3>Requisitante</h3>
@@ -128,18 +75,18 @@
 
       
       <div class="form-group">
-        <label for="UndCodTratamento" class="col-md-2 control-label">Setor Requisitante</label>
+        <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Requisitante</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
               <b>{{detalheSolicitacao.requisitanteUnidadeSigla}}</b> -
-              {{detalheSolicitacao.requisitanteUnidadeDescicao}}              
+              {{detalheSolicitacao.requisitanteFuncionarioNome}}              
             </li>
           </ul>
         </div>
       </div>  
       
-      <div class="form-group">
+      <!-- <div class="form-group">
             <label for="CodSolServTab" class="col-md-2 control-label">Nome</label>
             <div class="col-md-8">
               <ul class="list-group">
@@ -148,13 +95,16 @@
                 </li>
               </ul>
             </div>
-      </div>
+      </div> -->
       <div class="form-group">
         <label for="CodSolServTab" class="col-md-2 control-label">Período</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.requisitanteDataSaida}} até  {{detalheSolicitacao.requisitanteDataRetorno}}
+              Saída: {{detalheSolicitacao.requisitanteDataSaida | date: 'dd/MM/yyyy, h:mm a'}} às {{detalheSolicitacao.requisitanteDataSaida }} 
+            </li>
+            <li class="list-group-item">
+              Retorno: {{detalheSolicitacao.requisitanteDataRetorno | date: 'dd/MM/yyyy, h:mm a'}} às {{detalheSolicitacao.requisitanteDataRetorno }} 
             </li>
           </ul>
         </div>
@@ -192,6 +142,25 @@
           </ul>
         </div>
       </div> 
+      <!-- <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+          <h3>Passageiros</h3>
+        </div>
+      </div> -->
+
+      <div class="form-group">
+        <label for="UndCodTratamento" class="col-md-2 control-label">Passageiros</label>
+        <div class="col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let passageiro of detalheSolicitacao.passageiros">
+                           
+                <b>{{passageiro.passageiroSetorSigla}}</b> -
+                    {{passageiro.passageiroNome}}              
+            </li>
+          </ul>
+        </div>
+      </div>  
+
 
 
       <div class="row">
@@ -203,18 +172,18 @@
       <br style="clear: both;"/>  
 
       <div class="form-group">
-        <label for="UndCodTratamento" class="col-md-2 control-label">Setor Requisitante</label>
+        <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Gestor Responsável</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
               <b>{{detalheSolicitacao.requisitanteGestorUnidadeSigla}}</b> -
-              {{detalheSolicitacao.requisitanteGestorUnidadeDescicao}}              
+              {{detalheSolicitacao.requisitanteGestorNome}}              
             </li>
           </ul>
         </div>
       </div>  
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="CodRequisitante" class="col-md-2 control-label">Gestor Responsável</label>
         <div class="col-md-8">
           <ul class="list-group">
@@ -223,10 +192,10 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group">
-        <label for="CodRequisitante" class="col-md-2 control-label">Gestor Responsável Data Deliberação</label>
+        <label for="CodRequisitante" class="col-md-2 control-label">Data de Deliberação</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -292,11 +261,6 @@
           </ul>
         </div>
       </div>
-
-
-
-  
-  
 
         <br style="clear: both;"/>
 

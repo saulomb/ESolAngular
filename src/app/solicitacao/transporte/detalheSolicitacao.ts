@@ -1,3 +1,4 @@
+import { Data } from "@angular/router";
 import { Lotacao } from "./lotacao";
 
 export class DetalheSolicitacao {
@@ -6,6 +7,7 @@ export class DetalheSolicitacao {
   cadastroUnidadeDescicao: string;
   cadastroFuncionarioNome:string;
   cadastroData: Date;
+  cadastroDataEnvioGestor: Data;
 
   requisitanteUnidadeSigla:string;
   requisitanteUnidadeDescicao:string;
@@ -37,6 +39,16 @@ export class DetalheSolicitacao {
   solicitacaoTransporteStatus: number;
   solicitacaoTransporteStatusNome: string;
   
+  passageiros: detalhePassageiro[];
+}
+
+export class detalhePassageiro{
+  id: number;
+  passageiroNome: string;
+  passageiroSetorSigla: string;
+  passageiroSetorNome: string;
+
+
 }
 
 

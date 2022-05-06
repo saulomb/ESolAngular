@@ -7,12 +7,12 @@
             <tr>
             <th scope="col">Id</th>
             <th scope="col">Solicitante</th>
-            <th scope="col">Lotação Solicitante</th>
-            <th scope="col">Data</th>
-            <th scope="col">Parecer</th>
-            <th scope="col">Reponsável</th>      
-            <th scope="col">Lotação Reponsável</th>
-            <th scope="col">Código do Status</th>
+            <th scope="col">Setor Solicitante</th>
+            <th scope="col">Data de cadastro</th>
+            <!-- <th scope="col">Parecer</th> -->
+            <th scope="col">Setor Atendimento</th>
+            <th scope="col">Deliberado por</th>      
+            <!-- <th scope="col">Código do Status</th> -->
             <th scope="col">Nome do Status</th>
             <th scope="col">Opções</th>
             </tr>
@@ -26,10 +26,10 @@
                 <td>{{ solicitacao.solicitanteNome}}</td>
                 <td>{{ solicitacao.solitanteLotacaoNome }}</td>
                 <td>{{ solicitacao.dataCadastro }}</td>
-                <td>{{ solicitacao.parecer }}</td>
-                <td>{{ solicitacao.solicitanteTratamentoNome}}</td>        
+                <!-- <td>{{ solicitacao.parecer }}</td> -->
                 <td>{{ solicitacao.lotacaoTratamentoNome }}</td> 
-                <td>{{ solicitacao.solicitacaoStatus }}</td> 
+                <td>{{ solicitacao.solicitanteTratamentoNome}}</td>        
+                <!-- <td>{{ solicitacao.solicitacaoStatus }}</td>  -->
                 <td>{{ solicitacao.solicitacaoStatusNome }}</td> 
                 <td>
                     <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao', solicitacao.id]">Detalhe</a>
