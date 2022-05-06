@@ -10,5 +10,8 @@ export const rootRouterConfig: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'sobre', component: SobreComponent},
     {path: 'solicitacoes', component: ListaTransporteComponent },
-    {path: 'detalhe-solicitacao', component: DetalheTransporteComponent },
+    {path: 'detalhe-solicitacao/:Id', component: DetalheTransporteComponent },
 ];
+
+
+// { path: 'products/:productId', component: ProductDetailsComponent },

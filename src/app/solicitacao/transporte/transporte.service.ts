@@ -26,8 +26,8 @@ export class TransporteService {
         return this.http.get<Lotacao[]>(this.UrlServiceV1 +"transporte/lotacoes");
       }
 
-      obterDetalheSolicitacao(): Observable<DetalheSolicitacao> {
+      obterDetalheSolicitacao(solicitacaoId: number): Observable<DetalheSolicitacao> {
             
-        return this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/1");
+        return this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/"+solicitacaoId.toString());
       }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { DetalheSolicitacao } from '../detalheSolicitacao';
 import { TransporteService } from '../transporte.service';
 
@@ -9,13 +10,18 @@ import { TransporteService } from '../transporte.service';
 })
 export class DetalheTransporteComponent implements OnInit {
 
-  constructor(private transporteServico: TransporteService) { }
+  constructor(
+              private transporteServico: TransporteService,
+              private route: ActivatedRoute) { }
 
   public detalheSolicitacao: DetalheSolicitacao;
 
   ngOnInit()  {
 
-    this.transporteServico.obterDetalheSolicitacao()
+   const routeParams = this.route.snapshot.paramMap;
+   const solicitacaoId = Number(routeParams.get('Id'));
+
+    this.transporteServico.obterDetalheSolicitacao(solicitacaoId)
     .subscribe(
       detalheSolicitacao =>{
         this.detalheSolicitacao = detalheSolicitacao;

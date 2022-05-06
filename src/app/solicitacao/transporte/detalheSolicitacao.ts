@@ -2,30 +2,43 @@ import { Lotacao } from "./lotacao";
 
 export class DetalheSolicitacao {
   id: number;
-  unidadeCadastroSigla: string;
-  unidadeCadastroDescicao: string;
-  unidadeGestorSigla: string;
-  unidadeGestorDescicao: string;
-  unidadeTratamentoSigla: string;
-  unidadeTratamentoDescicao: string;  
-  funcionarioCadastroNome: string;
-  funcionarioGestorNome: string;  
-  funcionarioTratamentoNome: string;
+  cadastroUnidadeSigla: string;
+  cadastroUnidadeDescicao: string;
+  cadastroFuncionarioNome:string;
+  cadastroData: Date;
+
+  requisitanteUnidadeSigla:string;
+  requisitanteUnidadeDescicao:string;
+  requisitanteFuncionarioNome:string;
+  requisitanteDataSaida: Date;
+  requisitanteDataRetorno: Date;
+
+  requisistanteItinerario: string;
+  requisitanteServicoDescricao: string;
+  requisistanteComMotorista: boolean;
   
 
-  dataCadastro: Date;
-  dataSaida: Date;
-  dataRetorno: Date;
-  dataParecer: Date;
-  dataDeliberacaoGestor: Date;
-  itinerario: string;
-  parecerFinal: string;
-  solicitacaoAprovada: boolean;
-  solicitacaoReprovada: boolean;
-  comMotorista: boolean;
-  servicoDescricao: string;
+  requisitanteGestorUnidadeSigla: string;
+  requisitanteGestorUnidadeDescicao: string;
+  requisitanteGestorNome: string;  
+  requisitanteGestorDeliberacaoData: Date;
+ 
+  atendimentoUnidadeSigla: string;
+  atendimentoUnidadeDescicao: string;  
+  atendimentFuncionarioGestorNome: string;
+  atendimentoFuncionarioDeliberouNome: string;
+  atendimentoDeliberouData: Date;
+  
+  
+  atendimentoParecer: string;
+  atendimentoDataSaidaLiberado: Date;
+  atendimentoComMotorista: boolean;
+  
   solicitacaoTransporteStatus: number;
   solicitacaoTransporteStatusNome: string;
   
 }
+
+
+
 
