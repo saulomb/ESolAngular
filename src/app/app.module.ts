@@ -12,7 +12,8 @@ import { SobreComponent } from './institucional/sobre/sobre.component';
 import { rootRouterConfig } from './app.routes';
 import { ListaTransporteComponent } from './solicitacao/transporte/lista-transporte/lista-transporte.component';
 import { TransporteService } from './solicitacao/transporte/transporte.service';
-import { DetalheTransporteComponent } from './solicitacao/transporte/detalhe-transporte/detalhe-transporte.component'; 
+import { DetalheTransporteComponent } from './solicitacao/transporte/detalhe-transporte/detalhe-transporte.component';
+import { GestorSolicitacaoTransporteComponent } from './solicitacao/transporte/gestor-solicitacao-transporte/gestor-solicitacao-transporte.component'; 
 
 
 
@@ -24,7 +25,8 @@ import { DetalheTransporteComponent } from './solicitacao/transporte/detalhe-tra
     FooterComponent,
     SobreComponent,
     ListaTransporteComponent,
-    DetalheTransporteComponent
+    DetalheTransporteComponent,
+    GestorSolicitacaoTransporteComponent
 
     
   ],

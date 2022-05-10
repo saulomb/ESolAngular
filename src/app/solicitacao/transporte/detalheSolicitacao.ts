@@ -23,6 +23,7 @@ export class DetalheSolicitacao {
   requisitanteGestorUnidadeSigla: string;
   requisitanteGestorUnidadeDescicao: string;
   requisitanteGestorNome: string;  
+  requisitanteGestorId: number;
   requisitanteGestorDeliberacaoData: Date;
  
   atendimentoUnidadeSigla: string;
