@@ -14,7 +14,7 @@
             <th scope="col">Deliberado por</th>      
             <!-- <th scope="col">Código do Status</th> -->
             <th scope="col">Nome do Status</th>
-            <th scope="col" colspan="3">Ação</th>
+            <th scope="col" colspan="4">Ação</th>
             </tr>
             </thead>
             <tbody>
@@ -36,13 +36,13 @@
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <a class="btn btn-success" [routerLink]="['/getor-solicitacao-transporte', solicitacao.id]">Deliberar</a>
+                    <a class="btn btn-success" [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">Deliberar</a>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <a class="btn btn-info" [routerLink]="['/getor-solicitacao-transporte', solicitacao.id]">Atendimento</a>
+                    <a class="btn btn-secondary" [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">Atendimento</a>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
-                </td>
+                </td>                
             </tr>
             </tbody>
         </table>

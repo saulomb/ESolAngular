@@ -1,0 +1,284 @@
+<div class="container main-container">
+    <h4>Deliberar Atendimento de Veículo</h4>
+  
+          
+    <div class="row">
+      <div class="col-md-12" style="text-align: center;">
+        <h3>Dados da Solicitação</h3>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label class="col-md-2 control-label">Setor/Nome</label>
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <b>{{detalheSolicitacao.cadastroUnidadeSigla}}</b> -
+            {{detalheSolicitacao.cadastroFuncionarioNome}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+ 
+    <div class="form-group">
+      <label class="col-md-2 control-label">Data de cadastro</label>
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">
+             {{detalheSolicitacao.cadastroData}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label class="col-md-2 control-label">Data de envio para o gestor</label>
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">
+             {{detalheSolicitacao.cadastroDataEnvioGestor}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="CodRequisitante" class="col-md-2 control-label">Situação da Solicitação</label>
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">
+            {{detalheSolicitacao.solicitacaoTransporteStatusNome}} 
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+  
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <h3>Requisitante</h3>
+          </div>
+        </div>
+  
+        <br style="clear: both;"/>
+  
+        
+        <div class="form-group">
+          <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Requisitante</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <b>{{detalheSolicitacao.requisitanteUnidadeSigla}}</b> -
+                {{detalheSolicitacao.requisitanteFuncionarioNome}}              
+              </li>
+            </ul>
+          </div>
+        </div>  
+        
+        <div class="form-group">
+          <label for="CodSolServTab" class="col-md-2 control-label">Período</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                Saída: {{detalheSolicitacao.requisitanteDataSaida | date: 'dd/MM/yyyy, h:mm a'}} 
+              </li>
+              <li class="list-group-item">
+                Retorno: {{detalheSolicitacao.requisitanteDataRetorno | date: 'dd/MM/yyyy, h:mm a'}}
+              </li>
+            </ul>
+          </div>
+        </div>   
+  
+        <div class="form-group">
+          <label for="CodSolServTab" class="col-md-2 control-label">Itinerario</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                {{detalheSolicitacao.requisistanteItinerario}}
+              </li>
+            </ul>
+          </div>
+        </div>  
+  
+        <div class="form-group">
+          <label for="CodSolServTab" class="col-md-2 control-label">Descrição do serviço</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                {{detalheSolicitacao.requisitanteServicoDescricao}}
+              </li>
+            </ul>
+          </div>
+        </div> 
+  
+        <div class="form-group">
+          <label for="CodSolServTab" class="col-md-2 control-label">Com motorista</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                {{detalheSolicitacao.requisistanteComMotorista ? "Sim" : "Não"}}
+              </li>
+            </ul>
+          </div>
+        </div> 
+  
+        <div class="form-group">
+          <label for="UndCodTratamento" class="col-md-2 control-label">Passageiros</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let passageiro of detalheSolicitacao.passageiros">
+                             
+                  <b>{{passageiro.passageiroSetorSigla}}</b> -
+                      {{passageiro.passageiroNome}}              
+              </li>
+            </ul>
+          </div>
+        </div>  
+  
+  
+  
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <h3>Gestor do Requisitante</h3>
+          </div>
+        </div>
+  
+        <br style="clear: both;"/>  
+  
+        <div class="form-group">
+          <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Gestor Responsável</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <b>{{detalheSolicitacao.requisitanteGestorUnidadeSigla}}</b> -
+                {{detalheSolicitacao.requisitanteGestorNome}}              
+              </li>
+            </ul>
+          </div>
+        </div>  
+  
+  
+        <div class="form-group">
+          <label for="CodRequisitante" class="col-md-2 control-label">Data de Deliberação</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                {{detalheSolicitacao.requisitanteGestorDeliberacaoData}} 
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+  
+  
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <h3>Atendimento</h3>
+          </div>
+        </div>
+  
+        <br style="clear: both;"/>
+  
+  
+        <div class="form-group">
+          <label for="UndCodTratamento" class="col-md-2 control-label">Setor Resonsável pelo Atendimento</label>
+          <div class="col-md-8">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <b>{{detalheSolicitacao.atendimentoUnidadeSigla}}</b> -
+                {{detalheSolicitacao.atendimentoUnidadeDescicao}}              
+              </li>
+            </ul>
+          </div>
+        </div>  
+
+
+        <!-- <div class="row">
+            <div class="col-md-6">
+               <button  class="btn btn-success" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, true)"  >Aprovar</button >
+            </div>
+            <div class="col-md-6">
+                <button  class="btn btn-danger" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, false)"  >Cancelar</button >
+            </div>
+        </div> -->
+       
+          <br style="clear: both;"/>
+
+          <form novalidate (ngSubmit)="setarAtendimento()" [formGroup]="atendimentoForm">
+            <div class="form-horizontal">
+    
+
+                
+                
+                <!-- <label class="col-md-2 control-label" >solicitacaoId:{{detalheSolicitacao.id.toString()}}</label>
+                <label class="col-md-2 control-label" >gestorDeliberouId:{{detalheSolicitacao.requisitanteGestorId.toString()}}</label>
+                <div class="form-group">
+                    <input  type="text"  id="solicitacaoId" name="solicitacaoId"  formControlName="solicitacaoId" value={{detalheSolicitacao.id.toString()}}>
+                    <input   type="text" id="gestorDeliberouId" name="gestorDeliberouId"  formControlName="gestorDeliberouId" value={{detalheSolicitacao.requisitanteGestorId.toString()}}>
+                </div> -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="gestorParecer">Descrição do Parecer</label>
+                    <div class="col-md-10">
+                        <!-- <input class="form-control" id="gestorParecer" type="text" 
+                        placeholder="Parecer (requerido)" 
+                        formControlName="gestorParecer"  /> -->
+
+                        <textarea class="form-control" rows="3" name="gestorParecer" id="gestorParecer" formControlName="gestorParecer"></textarea>
+                    </div>
+          
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="dataSaidaLiberada">Data de saída liberada</label>
+                    <div class="col-md-4">
+                        <input class="form-control"  id="dataSaidaLiberada"  type="date" formControlName="dataSaidaLiberada"
+                         placeholder="Data de saída liberada " />
+                    </div>
+                </div>
+
+                <div class="form-group form-check">
+                    <div class="col-md-4">
+                        <input class="form-check-input"  id="comMotorista" type="checkbox" formControlName="comMotorista">
+                        <label class="form-check-label" for="comMotorista">Com Motorista</label>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label class="col-md-2 control-label" for="atendimentoStatus">Parecer</label>
+                    <div class="col-md-4">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input"  name="atendimentoStatus" type="radio"  value="1" formControlName="atendimentoStatus">Deferido
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">  
+                                <input  class="form-check-input"  name="atendimentoStatus" type="radio" value="2" formControlName="atendimentoStatus">Indeferido  
+                            </label>                
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="atendimentoStatus" >Situação do parecer</label>
+                    <div class="col-md-4">
+                        <select name="atendimentoStatus" id="atendimentoStatus" formControlName="atendimentoStatus">
+                            <option value="0">Sem deferimento</option>
+                            <option value="1">Defetido</option>
+                            <option value="2">Indeferido</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span><button class="btn btn-success" id="Registrar" type="submit">Salvar Atendimento</button></span>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+  
+  
+  </div>
+

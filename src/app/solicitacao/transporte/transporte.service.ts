@@ -4,6 +4,8 @@ import { Observable } from "rxjs";
 import { transporteSolicitado } from "./transporteSolicitado";
 import { Lotacao } from "./lotacao";
 import { DetalheSolicitacao } from "./detalheSolicitacao";
+import { AtendimentoSolicitacao } from "./atendimentoSolicitacao";
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,41 +34,20 @@ export class TransporteService {
       }
 
       deliberarSolicitacao(solicitacaoId: number, gestorId: number, aprovado:boolean)  {
-        // let queryParams = new HttpParams();
-        //   queryParams.append("solicitacaoId",solicitacaoId.toString()); 
-        //   queryParams.append("gestorId",gestorId.toString()); 
-        //   queryParams.append("aprovado",aprovado.toString()); 
           const queryParams = new HttpParams()
           .set('solicitacaoId', solicitacaoId.toString())
           .set('gestorId', gestorId.toString())
           .set('aprovada', aprovado.toString());
 
-
           console.log(queryParams);
 
-      //     const body = {
-      //       solicitacaoid: 1,
-      //       gestorid: 646,
-      //       aprovado: true
-      //   };
-    
-      //   const headers = 'headers made with HttpHeaders';
-    
-      //   const options = {
-      //     headers: headers,
-      //     observe: "response" as 'body', // to display the full response & as 'body' for type cast
-      //     responseType: "json"
-      // };
-
-
-     
-
-      return this.http.post(this.UrlServiceV1 +"transporte/deliberar-solicitacao",null,  { params: queryParams });
-
-          // return this.http.post(this.UrlServiceV1 +"transporte/deliberar-solicitacao", {solicitacaoId: solicitacaoId,          
-          //        gestorId: gestorId, aprovado: aprovado});
-         
-
-       // return this.http.post<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/deliberar-solicitacao?solicitacaoId=1&gestorId=646&aprovada=true",queryParams);
+          return this.http.post(this.UrlServiceV1 +"transporte/deliberar-solicitacao",null,  { params: queryParams });
+       
       }
+
+      atendimentoSolicitacao(atendimento: AtendimentoSolicitacao)  {
+
+        return this.http.post(this.UrlServiceV1 +"transporte/atendimento-solicitacao/",atendimento);
+     
+    }
 }
