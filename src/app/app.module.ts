@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { IncluirSolicitacaoComponent } from './solicitacao/transporte/incluir-solicitacao/incluir-solicitacao.component';
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -32,7 +33,8 @@ registerLocaleData(localePt, 'pt-BR');
     ListaTransporteComponent,
     DetalheTransporteComponent,
     GestorSolicitacaoTransporteComponent,
-    AtendimentoSolicitacaoTransporteComponent
+    AtendimentoSolicitacaoTransporteComponent,
+    IncluirSolicitacaoComponent
 
     
   ],

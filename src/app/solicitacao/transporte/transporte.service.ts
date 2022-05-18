@@ -5,6 +5,7 @@ import { transporteSolicitado } from "./transporteSolicitado";
 import { Lotacao } from "./lotacao";
 import { DetalheSolicitacao } from "./detalheSolicitacao";
 import { AtendimentoSolicitacao } from "./atendimentoSolicitacao";
+import { Funcionario } from "./funcionario";
 
 
 @Injectable({
@@ -31,6 +32,16 @@ export class TransporteService {
       obterDetalheSolicitacao(solicitacaoId: number): Observable<DetalheSolicitacao> {
             
         return this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/"+solicitacaoId.toString());
+      }
+
+      obterFuncionarioPorLotacao(lotacaoId: number): Observable<Funcionario[]> {
+            
+        return this.http.get<Funcionario[]>(this.UrlServiceV1 +"transporte/funcionario-por-lotacao/"+lotacaoId.toString());
+      }
+
+      obterFuncionarioPorId(lotacaoId: number): Observable<Funcionario> {
+            
+        return this.http.get<Funcionario>(this.UrlServiceV1 +"transporte/funcionario/"+lotacaoId.toString());
       }
 
       deliberarSolicitacao(solicitacaoId: number, gestorId: number, aprovado:boolean)  {

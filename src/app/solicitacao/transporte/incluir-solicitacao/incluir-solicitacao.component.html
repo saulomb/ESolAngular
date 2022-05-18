@@ -1,0 +1,206 @@
+<div class="container main-container">
+    <!-- <div class="row">
+        <h4>Incluir da Solicitação de Veículo</h4>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+          <h4>Incluir Solicitação de Veículo</h4>
+        </div>
+      </div>
+ 
+          
+
+  
+        <form novalidate (ngSubmit)="incluirSolicitacao()" [formGroup]="solicitacaoForm">
+        
+          
+          
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label ">Solicitante</label>
+            <div class="col-sm-8">
+              <!-- <input class="form-control"  id="solicitacaoCadastroUnidadeSigla"  type="text"  formControlName="solicitacaoCadastroUnidadeSigla" readonly="true" /> -->
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <b>{{this.solicitacaoForm.get('solicitacaoCadastroUnidadeSigla').value}}</b> - {{this.solicitacaoForm.get('solicitacaoCadastroFuncionarioNome').value}}
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        
+      
+        
+              <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                  <h3>Requisitante</h3>
+                </div>
+              </div>
+        
+              <br style="clear: both;"/>
+        
+        
+          <div class="form-group row">
+          <label for="UndCodTratamento" class="col-sm-2 col-form-label ">Setor do Requisitante</label>
+          <div class="col-sm-8">
+            <select name="solicitacaoRequisitanteUnidadeId" id="solicitacaoRequisitanteUnidadeId" 
+            class="form-control"  formControlName="solicitacaoRequisitanteUnidadeId"
+            (change)="buscaRequisitantePorLotacao($event.target.value)">
+                <!-- <option value="0">CTINF</option>
+                <option value="1">DP</option>
+                <option value="2">DSA</option> -->
+                <option [value]="lotacao.id" *ngFor="let lotacao of lotacoes" >{{lotacao.sigla}}</option>
+                   
+            </select>
+          </div>
+        </div>  
+        
+        <div class="form-group row">
+              <label for="CodSolServTab" class="col-sm-2 col-form-label ">Requisitante</label>
+              <div class="col-sm-8">
+                <select name="solicitacaoRequisitanteId" id="solicitacaoRequisitanteId"  
+                   class="form-control" formControlName="solicitacaoRequisitanteUnidadeId" > 
+ 
+                    <option [ngValue]="requisitante.id" *ngFor="let requisitante of requisitanteFuncionario" >{{requisitante.nome}}</option>
+                </select>
+              </div>
+        </div>
+        <div class="form-group row">
+          <label for="CodSolServTab" class="col-sm-2 col-form-label">Saída</label>    
+          <div class="col-sm-4">
+            <input class="form-control"  id="solicitacaoDataSaida"  type="date"  placeholder="Data de saída liberada " formControlName="solicitacaoDataSaida" />
+          </div>
+          <div class="col-sm-4">
+            <input class="form-control"  id="solicitacaoDataSaida"  type="time"  placeholder="Data de saída liberada " formControlName="solicitacaoDataSaida" />
+          </div>
+        </div>   
+
+        <div class="form-group row">
+            <label for="CodSolServTab" class="col-sm-2 col-form-label">Retorno</label>    
+            <div class="col-sm-4">
+              <input class="form-control"  id="solicitacaoDataRetorno"  type="date"  placeholder="Data de saída liberada" formControlName="solicitacaoDataRetorno" />
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control"  id="solicitacaoDataRetorno"  type="time"  placeholder="Data de saída liberada "  formControlName="solicitacaoDataRetorno"/>
+            </div>
+          </div>  
+
+          
+        <div class="form-group row">
+          <label for="solicitacaoItinerario" class="col-md-2 control-label">Itinerario</label>
+          <div class="col-sm-8">
+            <textarea class="form-control" rows="3" name="solicitacaoItinerario" id="solicitacaoItinerario"  formControlName="solicitacaoItinerario"></textarea>
+          </div>
+        </div>  
+
+        <div class="form-group row">
+            <label for="solicitacaoServicoDescricao" class="col-md-2 control-label">Descrição do serviço</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" rows="3" name="solicitacaoServicoDescricao" id="solicitacaoServicoDescricao"  formControlName="solicitacaoServicoDescricao"></textarea>
+            </div>
+          </div>  
+  
+          <div class="form-group row">
+            <label class="col-md-2 control-label" for="solicitacaoComMotorista">Com Motorista</label>
+            <div class="col-sm-6">
+                    <input class="form-check-input "  id="solicitacaoComMotorista" type="checkbox" >
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="UndCodTratamento" class="col-md-2 control-label">Gestor Responsável</label>
+            <div class="col-sm-8">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <b>Setor</b> - Gestor Responsável             
+                </li>
+              </ul>
+            </div>
+           
+   
+          </div>  
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+              <h3>Passageiros</h3>
+            </div>
+          </div>
+    
+          <br style="clear: both;"/>
+
+        <div class="form-group row">
+            <label for="solicitacaoPassageiroSetor" class="col-md-2 control-label ">Setor do passageiro</label>
+            <div class="col-sm-8">
+              <select name="solicitacaoPassageiroSetor" id="solicitacaoPassageiroSetor" 
+               class="form-control"   (change)="buscaPassageiroPorLotacao($event.target.value)">
+                  <option [value]="0">Selecione a lotacao</option>
+                  <option [value]="lotacao.id" *ngFor="let lotacao of lotacoes" >{{lotacao.sigla}}</option>
+                   
+              </select>
+            </div>
+          </div>  
+          
+          <div class="form-group row">
+                <label for="solicitacaoPassageiroFuncionario" class="col-md-2 control-label ">Passageiro</label>
+                <div class="col-sm-8">
+                  <select name="solicitacaoPassageiroFuncionario" id="solicitacaoPassageiroFuncionario"  
+                  class="form-control" >
+                    
+                     <option [ngValue]="passageiro.id" *ngFor="let passageiro of passageiroFuncionario" >{{passageiro.nome}}</option>
+                  </select>
+                 
+                </div>
+                <div class="col-sm-2">
+                    <a class="btn btn-success">Incluir</a>
+                </div>
+          </div>
+  
+  
+          <div class="form-group row">
+            <label for="UndCodTratamento" class="col-md-2 control-label"></label>
+            <div class="col-md-8">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let passageiro of solicitacao.passageiros">
+                               
+                    <b>{{passageiro.lotacaoFisicaSigla}}</b> -
+                        {{passageiro.nome}} <a class="btn btn-danger float-right">X</a>             
+                </li> 
+                 <!-- <li class="list-group-item"  *ngFor="let lotacao of lotacoes" >
+                    <b>{{lotacao.Id}}</b>- {{lotacao.Sigla}} <a class="btn btn-danger float-right">X</a>
+                </li> -->
+      
+                <!-- <li class="list-group-item"  >
+                    <b>CTINF</b>- SAULO MENDONÇA BEZERRA <a class="btn btn-danger float-right">X</a>
+                </li>
+                <li class="list-group-item"  >
+                    <b>CTINF</b>- SILVIO CESAR ARAUJO <a class="btn btn-danger float-right">X</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>  
+
+
+          </form>
+  
+  
+        <!-- <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <h3>Gestor do Requisitante</h3>
+          </div>
+        </div>
+  
+        <br style="clear: both;"/>   -->
+  
+
+  
+     
+          <br style="clear: both;"/>
+<!--   
+          <div class="row">
+            <div class="col-md-6">
+               <button  class="btn btn-success" (click)='buscaFuncionarioRequisitantePorLotacao(16)'  >Teste</button >
+            </div>
+            
+    
+         </div> -->
+  </div>

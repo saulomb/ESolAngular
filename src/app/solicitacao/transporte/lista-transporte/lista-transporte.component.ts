@@ -15,7 +15,7 @@ export class ListaTransporteComponent implements OnInit {
   {   }
 
   public solicitacoes: transporteSolicitado[];
-  public lotacoes: Lotacao[];
+  //public lotacoes: Lotacao[];
 
 
 
@@ -30,15 +30,15 @@ export class ListaTransporteComponent implements OnInit {
         
       );
 
-      this.transporteServico.obterLotacoes()
-      .subscribe(
-        lotacoes =>{
-          this.lotacoes = lotacoes;
-          console.log("Carregando lotações:",lotacoes);
-        },
-        error=>console.log(error)
+      // this.transporteServico.obterLotacoes()
+      // .subscribe(
+      //   lotacoes =>{
+      //     this.lotacoes = lotacoes;
+      //     console.log("Carregando lotações:",lotacoes);
+      //   },
+      //   error=>console.log(error)
         
-      );
+      // );
       
   }
 
