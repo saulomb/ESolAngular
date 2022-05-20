@@ -25,7 +25,7 @@ export class IncluirSolicitacao {
     atendimentoUnidadeSigla:string;
     atendimentFuncionarioGestorNome:string;
    
-    passageiros: Funcionario[];
+    passageiros: Funcionario[] ;
 
 }
 

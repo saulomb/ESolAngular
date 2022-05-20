@@ -19,6 +19,8 @@ export class IncluirSolicitacaoComponent implements OnInit {
   public lotacoes: Lotacao[];
   public requisitanteFuncionario: Funcionario[];
   public passageiroFuncionario: Funcionario[];
+  public passageiroSelecinadoId:number;
+  public solicitacaoPassageiros: Funcionario[] ;
 
   constructor(private transporteServico: TransporteService,
     private fb: FormBuilder) { }
@@ -34,6 +36,10 @@ export class IncluirSolicitacaoComponent implements OnInit {
     const lotacaoAtendimentoId = 22;
     const atendimentoNome = "MARCELO MOREIRA CARDOSO";
     const atendimentoLotacaoSigla = "TRANSPORTE";
+
+    this.solicitacaoPassageiros = new Array<Funcionario>();
+    
+    
 
     this.solicitacaoForm = this.fb.group({
       solicitacaoUnidadeCadastroId:[lotacaoCadastroId],
@@ -54,6 +60,7 @@ export class IncluirSolicitacaoComponent implements OnInit {
       atendimentoUnidadeSigla:[atendimentoNome],
       atendimentFuncionarioGestorNome:[atendimentoLotacaoSigla]
       
+
 
     });
 
@@ -129,22 +136,56 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
   adicionarPassageiro(funcionarioId: number){
 
-    var funcionario: Funcionario;
-    
-    this.transporteServico.obterFuncionarioPorId(funcionarioId)
-    .subscribe(
-      funcionarioEncontrado =>{
-        funcionario = funcionarioEncontrado;
-        console.log("Carregando Passageiros:",funcionario);
-        this.solicitacao.passageiros.push(funcionario)
-      },
-      error=>console.log(error)
-      
-    );
+    let funcionario = this.passageiroFuncionario.find(f=> f.id == funcionarioId);
+    console.log(funcionario);
 
+    if (this.existePassageiro(funcionarioId)) return
+   
+    this.solicitacaoPassageiros.push(funcionario);
+   
+   
+   
+    //this.solicitacao.passageiros.push(funcionario);
+    //console.log(this.solicitacaoPassageiros);
+    // this.transporteServico.obterFuncionarioPorId(funcionarioId)
+    // .toPromise()
+    // .then
+    // (
+    //   funcionarioEncontrado =>{
+    //     funcionario = funcionarioEncontrado;
+    //     console.log("Carregando Funcionario:",funcionario);
+    //     this.solicitacaoPassageiros.push(funcionario);    
+    //   },
+    //   error=>console.log(error)
+      
+    // );
 
     
     
   }
+
+  removerPassageiro(funcionarioId: number){
+
+    let indexPassageiro = this.solicitacaoPassageiros.findIndex(item => item.id ==funcionarioId);
+    if (indexPassageiro <= -1) return;
+
+    //delete this.solicitacaoPassageiros[indexPassageiro];
+    //this.solicitacaoPassageiros = this.solicitacaoPassageiros.splice(indexPassageiro,1);
+    this.solicitacaoPassageiros = this.solicitacaoPassageiros.filter(f=> f.id != funcionarioId);
+    
+
+
+    console.log( this.solicitacaoPassageiros);
+
+   // this.solicitacaoPassageiros.pop();
+
+  }
+
+   existePassageiro(funcionarioId: number): boolean {
+    let funcionarioEncontrado = this.solicitacaoPassageiros.find(f=> f.id == funcionarioId);
+
+    return funcionarioEncontrado != null;
+    
+    }
 
 }

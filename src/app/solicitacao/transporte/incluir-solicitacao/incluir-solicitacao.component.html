@@ -143,7 +143,7 @@
           <div class="form-group row">
                 <label for="solicitacaoPassageiroFuncionario" class="col-md-2 control-label ">Passageiro</label>
                 <div class="col-sm-8">
-                  <select name="solicitacaoPassageiroFuncionario" id="solicitacaoPassageiroFuncionario"  
+                  <select  name="solicitacaoPassageiroFuncionario" id="solicitacaoPassageiroFuncionario"  
                   class="form-control" >
                     
                      <option [ngValue]="passageiro.id" *ngFor="let passageiro of passageiroFuncionario" >{{passageiro.nome}}</option>
@@ -151,7 +151,8 @@
                  
                 </div>
                 <div class="col-sm-2">
-                    <a class="btn btn-success">Incluir</a>
+                    <!-- <a class="btn btn-success">Incluir</a> -->
+                    <button  class="btn btn-success" (click)="adicionarPassageiro(646)"  >Incluir</button >
                 </div>
           </div>
   
@@ -160,10 +161,10 @@
             <label for="UndCodTratamento" class="col-md-2 control-label"></label>
             <div class="col-md-8">
               <ul class="list-group">
-                <li class="list-group-item" *ngFor="let passageiro of solicitacao.passageiros">
-                               
+                <li class="list-group-item" *ngFor="let passageiro of solicitacaoPassageiros">
+                  <!-- <li class="list-group-item" *ngFor="let passageiro of solicitacao.passageiros"> -->
                     <b>{{passageiro.lotacaoFisicaSigla}}</b> -
-                        {{passageiro.nome}} <a class="btn btn-danger float-right">X</a>             
+                        {{passageiro.nome}} - {{passageiro.id}}<a class="btn btn-danger float-right" (click)="removerPassageiro(passageiro.id)">X</a>             
                 </li> 
                  <!-- <li class="list-group-item"  *ngFor="let lotacao of lotacoes" >
                     <b>{{lotacao.Id}}</b>- {{lotacao.Sigla}} <a class="btn btn-danger float-right">X</a>
