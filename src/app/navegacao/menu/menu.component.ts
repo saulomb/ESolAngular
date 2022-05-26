@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component  } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -6,5 +6,11 @@ import { Component, OnInit } from '@angular/core';
 
 })
 export class MenuComponent{
+  
+  public isCollapsed: boolean;
+
+  constructor(){
+    this.isCollapsed = true;
+}
 
 }
