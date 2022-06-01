@@ -20,10 +20,7 @@ export class IncluirSolicitacao {
     solicitacaoDataRetorno: Date;
     solicitacaoHoraSaida: Date;
     solicitacaoHoraRetorno: Date;
-  
-
-
-  
+    
     solicitacaoItinerario: string;
     solicitacaoServicoDescricao: string;
     solicitacaoComMotorista: boolean;
@@ -38,11 +35,3 @@ export class IncluirSolicitacao {
 }
 
 
-// export class Passageiro{
-//     transporteId: number;
-//     passageiroId: number;
-//     unidadePassageiroId: number;
-//     passageiroNome: string;
-//     passageiroSetorSigla: string;
-  
-//   }
