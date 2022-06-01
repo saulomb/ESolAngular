@@ -1,7 +1,10 @@
-import { detalhePassageiro } from "./detalheSolicitacao";
 import { Funcionario } from "./funcionario";
 
 export class IncluirSolicitacao {
+
+    // public constructor(init?: Partial<IncluirSolicitacao>) {
+    //     Object.assign(this, init);
+    // }
 
 
     id: number;
@@ -15,6 +18,11 @@ export class IncluirSolicitacao {
     solicitacaoRequisitanteGestorId:number;
     solicitacaoDataSaida: Date;
     solicitacaoDataRetorno: Date;
+    solicitacaoHoraSaida: Date;
+    solicitacaoHoraRetorno: Date;
+  
+
+
   
     solicitacaoItinerario: string;
     solicitacaoServicoDescricao: string;
@@ -25,7 +33,7 @@ export class IncluirSolicitacao {
     atendimentoUnidadeSigla:string;
     atendimentFuncionarioGestorNome:string;
    
-    passageiros: Funcionario[] ;
+    passageiros: Funcionario[] = [] ;
 
 }
 

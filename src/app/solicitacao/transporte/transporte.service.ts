@@ -6,6 +6,7 @@ import { Lotacao } from "./lotacao";
 import { DetalheSolicitacao } from "./detalheSolicitacao";
 import { AtendimentoSolicitacao } from "./atendimentoSolicitacao";
 import { Funcionario } from "./funcionario";
+import { IncluirSolicitacao } from "./incluirSolicitacao";
 
 
 @Injectable({
@@ -61,4 +62,10 @@ export class TransporteService {
         return this.http.post(this.UrlServiceV1 +"transporte/atendimento-solicitacao/",atendimento);
      
     }
+
+    incluirSolicitacao(solicitacao: IncluirSolicitacao)  {
+
+      return this.http.post(this.UrlServiceV1 +"transporte/incluir-solicitacao/",solicitacao);
+   
+  }
 }

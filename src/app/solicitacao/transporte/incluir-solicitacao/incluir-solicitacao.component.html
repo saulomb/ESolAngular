@@ -59,7 +59,7 @@
               <label for="CodSolServTab" class="col-sm-2 col-form-label ">Requisitante</label>
               <div class="col-sm-8">
                 <select name="solicitacaoRequisitanteId" id="solicitacaoRequisitanteId"  
-                   class="form-control" formControlName="solicitacaoRequisitanteUnidadeId" > 
+                   class="form-control" formControlName="solicitacaoRequisitanteId" > 
  
                     <option [ngValue]="requisitante.id" *ngFor="let requisitante of requisitanteFuncionario" >{{requisitante.nome}}</option>
                 </select>
@@ -71,7 +71,7 @@
             <input class="form-control"  id="solicitacaoDataSaida"  type="date"  placeholder="Data de saída liberada " formControlName="solicitacaoDataSaida" />
           </div>
           <div class="col-sm-4">
-            <input class="form-control"  id="solicitacaoDataSaida"  type="time"  placeholder="Data de saída liberada " formControlName="solicitacaoDataSaida" />
+            <input class="form-control"  id="solicitacaoHoraSaida"  type="time"  placeholder="Data de saída liberada " formControlName="solicitacaoHoraSaida" />
           </div>
         </div>   
 
@@ -81,7 +81,7 @@
               <input class="form-control"  id="solicitacaoDataRetorno"  type="date"  placeholder="Data de saída liberada" formControlName="solicitacaoDataRetorno" />
             </div>
             <div class="col-sm-4">
-              <input class="form-control"  id="solicitacaoDataRetorno"  type="time"  placeholder="Data de saída liberada "  formControlName="solicitacaoDataRetorno"/>
+              <input class="form-control"  id="solicitacaoHoraRetorno"  type="time"  placeholder="Data de saída liberada "  formControlName="solicitacaoHoraRetorno"/>
             </div>
           </div>  
 
@@ -103,7 +103,7 @@
           <div class="form-group row">
             <label class="col-md-2 control-label" for="solicitacaoComMotorista">Com Motorista</label>
             <div class="col-sm-6">
-                    <input class="form-check-input "  id="solicitacaoComMotorista" type="checkbox" >
+                    <input class="form-check-input "  id="solicitacaoComMotorista" type="checkbox"  formControlName="solicitacaoComMotorista">
             </div>
         </div>
 
@@ -116,11 +116,26 @@
                 </li>
               </ul>
             </div>
-           
-   
-          </div>  
+         </div>  
 
-        <div class="row">
+
+
+         <div class="form-group row">
+              
+              <div class="col-sm-2 ">
+                <button  type="submit" class="btn btn-success"   >Enviar Solicitação</button >
+              </div>
+
+              <div class="col-sm-2">
+                <!-- <button  type="submit" class="btn btn-danger"   >Cancelar Solicitação</button > -->
+                  <a class="btn btn-danger" [routerLink]="['/solicitacoes']">Cancelar Solicitação</a>
+              </div>
+          </div>
+      </form>
+
+   
+
+          <div class="row">
             <div class="col-md-12" style="text-align: center;">
               <h3>Passageiros</h3>
             </div>
@@ -128,7 +143,7 @@
     
           <br style="clear: both;"/>
 
-        <div class="form-group row">
+          <div class="form-group row">
             <label for="solicitacaoPassageiroSetor" class="col-md-2 control-label ">Setor do passageiro</label>
             <div class="col-sm-8">
               <select name="solicitacaoPassageiroSetor" id="solicitacaoPassageiroSetor" 
@@ -139,49 +154,35 @@
               </select>
             </div>
           </div>  
-          
+
           <div class="form-group row">
-                <label for="solicitacaoPassageiroFuncionario" class="col-md-2 control-label ">Passageiro</label>
-                <div class="col-sm-8">
-                  <select  name="solicitacaoPassageiroFuncionario" id="solicitacaoPassageiroFuncionario"  
-                  class="form-control" >
-                    
-                     <option [ngValue]="passageiro.id" *ngFor="let passageiro of passageiroFuncionario" >{{passageiro.nome}}</option>
-                  </select>
-                 
-                </div>
-                <div class="col-sm-2">
-                    <!-- <a class="btn btn-success">Incluir</a> -->
-                    <button  class="btn btn-success" (click)="adicionarPassageiro(646)"  >Incluir</button >
-                </div>
+            <label for="solicitacaoPassageiroFuncionario" class="col-md-2 control-label ">Passageiro</label>
+            <div class="col-sm-8">
+              <select  name="solicitacaoPassageiroFuncionario" id="solicitacaoPassageiroFuncionario"  
+              class="form-control"  (change)="setaPassageiroSelecionado($event)">
+                
+                 <option [value]="passageiro.id" *ngFor="let passageiro of passageiroFuncionario" >{{passageiro.nome}}</option>
+              </select>
+             
+            </div>
+            <div class="col-sm-2">
+              <button  class="btn btn-success" (click)="adicionarPassageiro()"  >Incluir</button >
           </div>
-  
-  
+      </div>
+
           <div class="form-group row">
             <label for="UndCodTratamento" class="col-md-2 control-label"></label>
             <div class="col-md-8">
               <ul class="list-group">
                 <li class="list-group-item" *ngFor="let passageiro of solicitacaoPassageiros">
-                  <!-- <li class="list-group-item" *ngFor="let passageiro of solicitacao.passageiros"> -->
-                    <b>{{passageiro.lotacaoFisicaSigla}}</b> -
-                        {{passageiro.nome}} - {{passageiro.id}}<a class="btn btn-danger float-right" (click)="removerPassageiro(passageiro.id)">X</a>             
+                    <b>{{passageiro.lotacaoFisicaSigla}}</b> - {{passageiro.nome}} - {{passageiro.id}}
+                    <a class="btn btn-danger float-right" (click)="removerPassageiro(passageiro.id)">X</a>             
                 </li> 
-                 <!-- <li class="list-group-item"  *ngFor="let lotacao of lotacoes" >
-                    <b>{{lotacao.Id}}</b>- {{lotacao.Sigla}} <a class="btn btn-danger float-right">X</a>
-                </li> -->
-      
-                <!-- <li class="list-group-item"  >
-                    <b>CTINF</b>- SAULO MENDONÇA BEZERRA <a class="btn btn-danger float-right">X</a>
-                </li>
-                <li class="list-group-item"  >
-                    <b>CTINF</b>- SILVIO CESAR ARAUJO <a class="btn btn-danger float-right">X</a>
-                </li> -->
+
               </ul>
             </div>
           </div>  
 
-
-          </form>
   
   
         <!-- <div class="row">

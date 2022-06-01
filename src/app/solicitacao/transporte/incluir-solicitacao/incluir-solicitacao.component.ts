@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy  } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Funcionario } from '../funcionario';
 import { IncluirSolicitacao } from '../incluirSolicitacao';
 import { Lotacao } from '../lotacao';
@@ -9,7 +10,8 @@ import { TransporteService } from '../transporte.service';
   selector: 'app-incluir-solicitacao',
   templateUrl: './incluir-solicitacao.component.html',
   styles: [
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class IncluirSolicitacaoComponent implements OnInit {
 
@@ -20,10 +22,18 @@ export class IncluirSolicitacaoComponent implements OnInit {
   public requisitanteFuncionario: Funcionario[];
   public passageiroFuncionario: Funcionario[];
   public passageiroSelecinadoId:number;
-  public solicitacaoPassageiros: Funcionario[] ;
+  public solicitacaoPassageiros: Funcionario[] = [] ;
+
+  public gestorLotacaoRequistanteId: number;
 
   constructor(private transporteServico: TransporteService,
-    private fb: FormBuilder) { }
+    private router:Router,
+    private fb: FormBuilder) {
+
+      //this.solicitacao = new IncluirSolicitacao();
+      
+
+     }
 
   ngOnInit() {
 
@@ -37,7 +47,11 @@ export class IncluirSolicitacaoComponent implements OnInit {
     const atendimentoNome = "MARCELO MOREIRA CARDOSO";
     const atendimentoLotacaoSigla = "TRANSPORTE";
 
-    this.solicitacaoPassageiros = new Array<Funcionario>();
+    //this.solicitacaoPassageiros = new Array<Funcionario>();
+
+    //this.solicitacaoPassageiros =  [...this.solicitacaoPassageiros];
+
+    
     
     
 
@@ -48,19 +62,20 @@ export class IncluirSolicitacaoComponent implements OnInit {
       solicitacaoCadastroUnidadeSigla: [cadastroLotacaoSigla],
       solicitacaoRequisitanteId: [],
       solicitacaoRequisitanteUnidadeId: [lotacaoCadastroId],
-      solicitacaoRequisitanteGestorId: [],
+      solicitacaoRequisitanteGestorId: [userId],
       solicitacaoDataSaida: [],
       solicitacaoDataRetorno: [],
+      solicitacaoHoraSaida: [],
+      solicitacaoHoraRetorno: [],      
       solicitacaoItinerario: [],
       solicitacaoServicoDescricao: [],
       solicitacaoComMotorista: [],
       
-      atendimentoUnidadeResponsavelId: [userAtendimentoId],
-      atendimentoGetorReponsavelId:[lotacaoAtendimentoId],
+      atendimentoUnidadeResponsavelId: [lotacaoAtendimentoId],
+      atendimentoGetorReponsavelId:[userAtendimentoId ],
       atendimentoUnidadeSigla:[atendimentoNome],
       atendimentFuncionarioGestorNome:[atendimentoLotacaoSigla]
       
-
 
     });
 
@@ -80,22 +95,34 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
   incluirSolicitacao(){
    
-     
-    this.solicitacaoForm = Object.assign({}, this.solicitacao, this.solicitacaoForm.value);
+     if (this.solicitacaoPassageiros.length == 0)
+       {
+         alert("Você deve incluir o passageiro antes incluir a solicitação!")
+         return;
+       }
+    
+    
+    this.solicitacao = Object.assign({}, this.solicitacao, this.solicitacaoForm.value);
+
+    //this.solicitacao = new IncluirSolicitacao(this.solicitacaoForm.value);
+
+
 
         
-    console.log(this.solicitacaoForm)
+    console.log("Form: ",this.solicitacaoForm.value);
+    this.solicitacao.passageiros = this.solicitacaoPassageiros;
+    console.log("Model: ",this.solicitacao);
 
-    // this.transporteServico.atendimentoSolicitacao(this.atendimentoSolicitacao).subscribe({
-    //   next: data => {
-    //       console.log(data);
-    //       this.router.navigate(['/solicitacoes'])
-    //   },
-    //   error: error => {
-    //      console.error('There was an error!', error);
-    //   }
+    this.transporteServico.incluirSolicitacao(this.solicitacao).subscribe({
+      next: data => {
+          console.log(data);
+          this.router.navigate(['/solicitacoes'])
+      },
+      error: error => {
+         console.error(error);
+      }
 
-    // })
+    })
   
   }
 
@@ -126,7 +153,9 @@ export class IncluirSolicitacaoComponent implements OnInit {
     .subscribe(
       funcionarios =>{
         this.passageiroFuncionario = funcionarios;
+        this.passageiroSelecinadoId = funcionarios[0]?.id;
         console.log("Carregando Passageiros:",funcionarios);
+        console.log("Passageiro selecionado:",this.passageiroSelecinadoId);
       },
       error=>console.log(error)
       
@@ -134,33 +163,14 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
   }
 
-  adicionarPassageiro(funcionarioId: number){
-
-    let funcionario = this.passageiroFuncionario.find(f=> f.id == funcionarioId);
+  adicionarPassageiro(){
+   
+    let funcionario = this.passageiroFuncionario.find(f=> f.id == this.passageiroSelecinadoId);
     console.log(funcionario);
 
-    if (this.existePassageiro(funcionarioId)) return
-   
-    this.solicitacaoPassageiros.push(funcionario);
-   
-   
-   
-    //this.solicitacao.passageiros.push(funcionario);
-    //console.log(this.solicitacaoPassageiros);
-    // this.transporteServico.obterFuncionarioPorId(funcionarioId)
-    // .toPromise()
-    // .then
-    // (
-    //   funcionarioEncontrado =>{
-    //     funcionario = funcionarioEncontrado;
-    //     console.log("Carregando Funcionario:",funcionario);
-    //     this.solicitacaoPassageiros.push(funcionario);    
-    //   },
-    //   error=>console.log(error)
-      
-    // );
-
+    if (this.existePassageiro(this.passageiroSelecinadoId)) return
     
+    this.solicitacaoPassageiros.push(funcionario);
     
   }
 
@@ -172,8 +182,6 @@ export class IncluirSolicitacaoComponent implements OnInit {
     //delete this.solicitacaoPassageiros[indexPassageiro];
     //this.solicitacaoPassageiros = this.solicitacaoPassageiros.splice(indexPassageiro,1);
     this.solicitacaoPassageiros = this.solicitacaoPassageiros.filter(f=> f.id != funcionarioId);
-    
-
 
     console.log( this.solicitacaoPassageiros);
 
@@ -188,4 +196,9 @@ export class IncluirSolicitacaoComponent implements OnInit {
     
     }
 
+
+    public setaPassageiroSelecionado(event): void {  // event will give you full breif of action
+      this.passageiroSelecinadoId = event.target.value;
+      console.log(this.passageiroSelecinadoId);
+    }
 }
