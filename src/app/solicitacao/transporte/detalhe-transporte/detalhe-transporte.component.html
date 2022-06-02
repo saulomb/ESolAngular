@@ -13,8 +13,8 @@
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
-          <b>{{detalheSolicitacao.cadastroUnidadeSigla}}</b> -
-          {{detalheSolicitacao.cadastroFuncionarioNome}}
+          <b>{{detalheSolicitacao?.cadastroUnidadeSigla}}</b> -
+          {{detalheSolicitacao?.cadastroFuncionarioNome}}
         </li>
       </ul>
     </div>
@@ -36,18 +36,7 @@
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
-           {{detalheSolicitacao.cadastroData}}
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-2 control-label">Data de envio para o gestor</label>
-    <div class="col-md-8">
-      <ul class="list-group">
-        <li class="list-group-item">
-           {{detalheSolicitacao.cadastroDataEnvioGestor}}
+           {{detalheSolicitacao?.cadastroData}}
         </li>
       </ul>
     </div>
@@ -58,7 +47,18 @@
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
-          {{detalheSolicitacao.solicitacaoTransporteStatusNome}} 
+          {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="detalheSolicitacao?.cadastroDataEnvioGestor != null">
+    <label class="col-md-2 control-label">Data de envio para o gestor</label>
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li class="list-group-item">
+           {{detalheSolicitacao?.cadastroDataEnvioGestor}}
         </li>
       </ul>
     </div>
@@ -79,8 +79,8 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              <b>{{detalheSolicitacao.requisitanteUnidadeSigla}}</b> -
-              {{detalheSolicitacao.requisitanteFuncionarioNome}}              
+              <b>{{detalheSolicitacao?.requisitanteUnidadeSigla}}</b> -
+              {{detalheSolicitacao?.requisitanteFuncionarioNome}}              
             </li>
           </ul>
         </div>
@@ -101,10 +101,10 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              Saída: {{detalheSolicitacao.requisitanteDataSaida | date: 'dd/MM/yyyy, h:mm a'}} às {{detalheSolicitacao.requisitanteDataSaida }} 
+              Saída: {{detalheSolicitacao?.requisitanteDataSaida | date: 'dd/MM/yyyy, h:mm a'}} 
             </li>
             <li class="list-group-item">
-              Retorno: {{detalheSolicitacao.requisitanteDataRetorno | date: 'dd/MM/yyyy, h:mm a'}} às {{detalheSolicitacao.requisitanteDataRetorno }} 
+              Retorno: {{detalheSolicitacao?.requisitanteDataRetorno | date: 'dd/MM/yyyy, h:mm a'}}
             </li>
           </ul>
         </div>
@@ -115,7 +115,7 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.requisistanteItinerario}}
+              {{detalheSolicitacao?.requisistanteItinerario}}
             </li>
           </ul>
         </div>
@@ -126,7 +126,7 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.requisitanteServicoDescricao}}
+              {{detalheSolicitacao?.requisitanteServicoDescricao}}
             </li>
           </ul>
         </div>
@@ -137,7 +137,7 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.requisistanteComMotorista}}
+              {{detalheSolicitacao?.requisistanteComMotoristaFormatado}}
             </li>
           </ul>
         </div>
@@ -152,10 +152,10 @@
         <label for="UndCodTratamento" class="col-md-2 control-label">Passageiros</label>
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item" *ngFor="let passageiro of detalheSolicitacao.passageiros">
+            <li class="list-group-item" *ngFor="let passageiro of detalheSolicitacao?.passageiros">
                            
-                <b>{{passageiro.passageiroSetorSigla}}</b> -
-                    {{passageiro.passageiroNome}}              
+                <b>{{passageiro?.passageiroSetorSigla}}</b> -
+                    {{passageiro?.passageiroNome}}              
             </li>
           </ul>
         </div>
@@ -176,8 +176,8 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              <b>{{detalheSolicitacao.requisitanteGestorUnidadeSigla}}</b> -
-              {{detalheSolicitacao.requisitanteGestorNome}}              
+              <b>{{detalheSolicitacao?.requisitanteGestorUnidadeSigla}}</b> -
+              {{detalheSolicitacao?.requisitanteGestorNome}}              
             </li>
           </ul>
         </div>
@@ -194,13 +194,13 @@
         </div>
       </div> -->
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="detalheSolicitacao?.requisitanteGestorDeliberacaoData != null">
         <label for="CodRequisitante" class="col-md-2 control-label">Data de Deliberação</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
               <!-- <?php echo $solicitacao->CodUsuarioAprov->PessoaNmCompleto ?> -->
-              {{detalheSolicitacao.requisitanteGestorDeliberacaoData}} 
+              {{detalheSolicitacao?.requisitanteGestorDeliberacaoData | date: 'dd/MM/yyyy, h:mm a'}}
             </li>
           </ul>
         </div>
@@ -222,52 +222,52 @@
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              <b>{{detalheSolicitacao.atendimentoUnidadeSigla}}</b> -
-              {{detalheSolicitacao.atendimentoUnidadeDescicao}}              
+              <b>{{detalheSolicitacao?.atendimentoUnidadeSigla}}</b> -
+              {{detalheSolicitacao?.atendimentoUnidadeDescicao}}              
             </li>
           </ul>
         </div>
       </div>  
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null" >
         <label for="CodRequisitante" class="col-md-2 control-label">Funcionário Deliberou</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.atendimentoFuncionarioDeliberouNome}}  em {{detalheSolicitacao.atendimentoDeliberouData}}
+              {{detalheSolicitacao?.atendimentoFuncionarioDeliberouNome}}  em {{detalheSolicitacao?.atendimentoDeliberouData}}
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
         <label for="CodRequisitante" class="col-md-2 control-label">Parecer</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.atendimentoParecer}} 
+              {{detalheSolicitacao?.atendimentoParecer}} 
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
         <label for="CodRequisitante" class="col-md-2 control-label">Data de saída liberada</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.atendimentoDataSaidaLiberado}} 
+              {{detalheSolicitacao?.atendimentoDataSaidaLiberado | date: 'dd/MM/yyyy, h:mm a'}}
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
         <label for="CodSolServTab" class="col-md-2 control-label">Com motorista</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao.atendimentoComMotorista}}
+              {{detalheSolicitacao?.atendimentoComMotoristaFormatado}}
             </li>
           </ul>
         </div>
@@ -275,5 +275,8 @@
 
         <br style="clear: both;"/>
 
-
+        <div class="col-sm-2">
+          <!-- <button  type="submit" class="btn btn-danger"   >Cancelar Solicitação</button > -->
+            <a class="btn btn-primary" [routerLink]="['/solicitacoes']">Voltar</a>
+        </div>
 </div>

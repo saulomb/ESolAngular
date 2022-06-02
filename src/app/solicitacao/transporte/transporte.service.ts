@@ -7,21 +7,22 @@ import { DetalheSolicitacao } from "./detalheSolicitacao";
 import { AtendimentoSolicitacao } from "./atendimentoSolicitacao";
 import { Funcionario } from "./funcionario";
 import { IncluirSolicitacao } from "./incluirSolicitacao";
+import { BaseService } from "src/app/services/base.service";
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class TransporteService {
+export class TransporteService extends BaseService {
 
-  protected UrlServiceV1: string = "https://localhost:44352/";
+  //protected UrlServiceV1: string = "https://localhost:44352/";
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient){ super();}
   
   
       obterSolicitacoes(): Observable<transporteSolicitado[]> {
           
-          return this.http.get<transporteSolicitado[]>(this.UrlServiceV1 +"transporte/solicitacoes-por-lotacao/16");
+          return this.http.get<transporteSolicitado[]>(this.UrlServiceV1 +"transporte/solicitacoes-por-lotacao/16", this.ObterHeaderJson());
            
       }
 
@@ -32,17 +33,17 @@ export class TransporteService {
 
       obterDetalheSolicitacao(solicitacaoId: number): Observable<DetalheSolicitacao> {
             
-        return this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/"+solicitacaoId.toString());
+        return this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/"+solicitacaoId.toString(), this.ObterHeaderJson());
       }
 
       obterFuncionarioPorLotacao(lotacaoId: number): Observable<Funcionario[]> {
             
-        return this.http.get<Funcionario[]>(this.UrlServiceV1 +"transporte/funcionario-por-lotacao/"+lotacaoId.toString());
+        return this.http.get<Funcionario[]>(this.UrlServiceV1 +"transporte/funcionario-por-lotacao/"+lotacaoId.toString(), this.ObterHeaderJson());
       }
 
       obterFuncionarioPorId(lotacaoId: number): Observable<Funcionario> {
             
-        return this.http.get<Funcionario>(this.UrlServiceV1 +"transporte/funcionario/"+lotacaoId.toString());
+        return this.http.get<Funcionario>(this.UrlServiceV1 +"transporte/funcionario/"+lotacaoId.toString(), this.ObterHeaderJson());
       }
 
       deliberarSolicitacao(solicitacaoId: number, gestorId: number, aprovado:boolean)  {

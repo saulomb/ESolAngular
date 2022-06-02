@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { pipe } from 'rxjs';
 import { DetalheSolicitacao } from '../detalheSolicitacao';
 import { TransporteService } from '../transporte.service';
 
@@ -8,31 +9,53 @@ import { TransporteService } from '../transporte.service';
   templateUrl: './detalhe-transporte.component.html'
 
 })
+
+
+ 
+
 export class DetalheTransporteComponent implements OnInit {
 
+ 
+  
+  
+ 
   constructor(
               private transporteServico: TransporteService,
-              private route: ActivatedRoute) { }
+              private activeRouter: ActivatedRoute) {
+               }
 
   public detalheSolicitacao: DetalheSolicitacao;
 
-  ngOnInit()  {
+  ngOnInit(): void  {
 
-   const routeParams = this.route.snapshot.paramMap;
-   const solicitacaoId = Number(routeParams.get('Id'));
+  //  const routeParams = this.activeRouter.snapshot.paramMap;
+  //  const solicitacaoId = Number(routeParams.get('Id'));
 
+  //  this.obterDetalheSolicitacao(solicitacaoId);
+  
+   this.activeRouter.params.subscribe(routeParams => { 
+		// this.loadUserDetail(routeParams.id); 
+    console.log(routeParams.Id);
+    this.obterDetalheSolicitacao(routeParams.Id);
+    
+	});
+   
+   
+
+  }
+
+  
+
+  obterDetalheSolicitacao(solicitacaoId: number){
     this.transporteServico.obterDetalheSolicitacao(solicitacaoId)
     .subscribe(
       detalheSolicitacao =>{
         this.detalheSolicitacao = detalheSolicitacao;
-        console.log("Detalhe Solicitação:",this.detalheSolicitacao);
-        console.log("Detalhe Solicitação API:",detalheSolicitacao);
+        console.log("Detalhe solicitação:" ,this.detalheSolicitacao);
       },
       error=>console.log(error)
       
     );
-
-
   }
 
 }

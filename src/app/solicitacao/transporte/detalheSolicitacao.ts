@@ -2,6 +2,12 @@ import { Data } from "@angular/router";
 import { Lotacao } from "./lotacao";
 
 export class DetalheSolicitacao {
+  
+  // constructor(){
+  //   this.atendimentoComMotorista ? this.atendimentoComMotoristaStr="Sim" : this.atendimentoComMotoristaStr="Não" ;
+
+  // }
+  
   id: number;
   cadastroUnidadeSigla: string;
   cadastroUnidadeDescicao: string;
@@ -18,6 +24,7 @@ export class DetalheSolicitacao {
   requisistanteItinerario: string;
   requisitanteServicoDescricao: string;
   requisistanteComMotorista: boolean;
+  requisistanteComMotoristaFormatado:string;
   
 
   requisitanteGestorUnidadeSigla: string;
@@ -36,6 +43,9 @@ export class DetalheSolicitacao {
   atendimentoParecer: string;
   atendimentoDataSaidaLiberado: Date;
   atendimentoComMotorista: boolean;
+  atendimentoComMotoristaFormatado: string;
+
+  
   
   solicitacaoTransporteStatus: number;
   solicitacaoTransporteStatusNome: string;

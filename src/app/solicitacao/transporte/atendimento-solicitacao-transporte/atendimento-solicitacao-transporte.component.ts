@@ -59,6 +59,7 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
       gestorDeliberouId:[userId],
       gestorParecer: [''],
       dataSaidaLiberada: [],
+      horaSaidaLiberada: [],
       comMotorista: [false],
       atendimentoStatus: [1],
     });
