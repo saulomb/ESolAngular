@@ -1,13 +1,9 @@
 import { Data } from "@angular/router";
-import { Lotacao } from "./lotacao";
+
 
 export class DetalheSolicitacao {
   
-  // constructor(){
-  //   this.atendimentoComMotorista ? this.atendimentoComMotoristaStr="Sim" : this.atendimentoComMotoristaStr="Não" ;
 
-  // }
-  
   id: number;
   cadastroUnidadeSigla: string;
   cadastroUnidadeDescicao: string;

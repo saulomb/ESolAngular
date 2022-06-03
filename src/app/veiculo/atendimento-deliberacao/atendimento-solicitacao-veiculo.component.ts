@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AtendimentoSolicitacao } from '../atendimentoSolicitacao';
-import { DetalheSolicitacao } from '../detalheSolicitacao';
-import { TransporteService } from '../transporte.service';
+import { AtendimentoSolicitacao } from '../models/atendimentoSolicitacao';
+import { DetalheSolicitacao } from '../models/detalheSolicitacao';
+
+import { VeiculoService } from '../services/veiculo.service';
 
 @Component({
-  selector: 'app-atendimento-solicitacao-transporte',
-  templateUrl: './atendimento-solicitacao-transporte.component.html',
+  selector: 'app-atendimento-solicitacao-veiculo',
+  templateUrl: './atendimento-solicitacao-veiculo.component.html',
   styles: [
   ]
 })
 export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
 
-  constructor(private transporteServico: TransporteService,
+  constructor(private transporteServico: VeiculoService,
     private activeRoute: ActivatedRoute,
     private router:Router,
     private fb: FormBuilder) { }

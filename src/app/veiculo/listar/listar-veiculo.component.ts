@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Lotacao } from '../lotacao';
-import { TransporteService } from '../transporte.service';
-import { transporteSolicitado } from '../transporteSolicitado';
+//import { Lotacao } from '../models/lotacao';
+import { VeiculoService } from '../services/veiculo.service';
+import { transporteSolicitado } from '../models/transporteSolicitado';
 
 @Component({
-  selector: 'app-lista-transporte',
-  templateUrl: './lista-transporte.component.html',
+  selector: 'app-listar-veiculo',
+  templateUrl: './listar-veiculo.component.html',
   styles: [
   ]
 })
 export class ListaTransporteComponent implements OnInit {
 
-  constructor(private transporteServico: TransporteService) 
+  constructor(private transporteServico: VeiculoService) 
   {   }
 
   public solicitacoes: transporteSolicitado[];

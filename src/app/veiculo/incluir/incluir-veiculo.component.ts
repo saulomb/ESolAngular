@@ -1,14 +1,14 @@
 import { Component, OnInit, ChangeDetectionStrategy  } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Funcionario } from '../funcionario';
-import { IncluirSolicitacao } from '../incluirSolicitacao';
-import { Lotacao } from '../lotacao';
-import { TransporteService } from '../transporte.service';
+import { Funcionario } from '../models/funcionario';
+import { IncluirSolicitacao } from '../models/incluirSolicitacao';
+import { Lotacao } from '../models/lotacao';
+import { VeiculoService } from '../services/veiculo.service';
 
 @Component({
-  selector: 'app-incluir-solicitacao',
-  templateUrl: './incluir-solicitacao.component.html',
+  selector: 'app-incluir-veiculo',
+  templateUrl: './incluir-veiculo.component.html',
   styles: [
   ],
   changeDetection: ChangeDetectionStrategy.Default
@@ -26,7 +26,7 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
   public gestorLotacaoRequistanteId: number;
 
-  constructor(private transporteServico: TransporteService,
+  constructor(private transporteServico: VeiculoService,
     private router:Router,
     private fb: FormBuilder) {
 

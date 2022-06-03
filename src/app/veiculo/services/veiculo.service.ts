@@ -1,19 +1,20 @@
 import { Injectable } from "@angular/core";
 import {HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from "rxjs";
-import { transporteSolicitado } from "./transporteSolicitado";
-import { Lotacao } from "./lotacao";
-import { DetalheSolicitacao } from "./detalheSolicitacao";
-import { AtendimentoSolicitacao } from "./atendimentoSolicitacao";
-import { Funcionario } from "./funcionario";
-import { IncluirSolicitacao } from "./incluirSolicitacao";
+
+import { Lotacao } from "../models/lotacao";
+import { DetalheSolicitacao } from "../models/detalheSolicitacao";
+import { AtendimentoSolicitacao } from "../models/atendimentoSolicitacao";
+import { Funcionario } from "../models/funcionario";
+import { IncluirSolicitacao } from "../models/incluirSolicitacao";
 import { BaseService } from "src/app/services/base.service";
+import { transporteSolicitado } from "../models/transporteSolicitado";
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class TransporteService extends BaseService {
+export class VeiculoService extends BaseService {
 
   //protected UrlServiceV1: string = "https://localhost:44352/";
 

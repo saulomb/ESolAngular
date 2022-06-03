@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DetalheSolicitacao } from '../detalheSolicitacao';
-import { TransporteService } from '../transporte.service';
+import { DetalheSolicitacao } from '../models/detalheSolicitacao';
+import { VeiculoService } from '../services/veiculo.service';
 
 @Component({
-  selector: 'app-gestor-solicitacao-transporte',
-  templateUrl: './gestor-solicitacao-transporte.component.html',
+  selector: 'app-gestor-deliberacao-veiculo',
+  templateUrl: './gestor-deliberacao-veiculo.component.html',
   styles: [
   ]
 })
 export class GestorSolicitacaoTransporteComponent implements OnInit {
 
-  constructor(private transporteServico: TransporteService,
+  constructor(private transporteServico: VeiculoService,
     private activeRoute: ActivatedRoute,
     private router:Router) { }
 

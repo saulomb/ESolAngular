@@ -1,15 +1,15 @@
 <div class="container main-container">
-  <h4>Detalhe da Solicitação de Veículo</h4>
-
+  <h3>Detalhe da Solicitação de Veículo</h3>
+  <br style="clear: both;"/>
         
   <div class="row">
-    <div class="col-md-12" style="text-align: center;">
-      <h3>Cadastro da Solicitação</h3>
+    <div class="col-md-8" style="text-align: center;">
+      <h4>Cadastro da Solicitação</h4>
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-2 control-label">Setor/Nome</label>
+    <label class="col-md-8 control-label">Setor/Nome</label>
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
@@ -20,30 +20,19 @@
     </div>
   </div>
 
-  <!-- <div class="form-group">
-    <label for="CodRequisitante" class="col-md-2 control-label">Cadastrado por</label>
-    <div class="col-md-8">
-      <ul class="list-group">
-        <li class="list-group-item">
-          {{detalheSolicitacao.cadastroFuncionarioNome}}
-        </li>
-      </ul>
-    </div>
-  </div> -->
-
   <div class="form-group">
-    <label class="col-md-2 control-label">Data de cadastro</label>
+    <label class="col-md-8 control-label">Data de cadastro</label>
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
-           {{detalheSolicitacao?.cadastroData}}
+           {{detalheSolicitacao?.cadastroData  | date: 'dd/MM/yyyy, h:mm a'}}
         </li>
       </ul>
     </div>
   </div>
 
   <div class="form-group">
-    <label for="CodRequisitante" class="col-md-2 control-label">Situação da Solicitação</label>
+    <label for="CodRequisitante" class="col-md-8 control-label">Situação da Solicitação</label>
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
@@ -54,11 +43,11 @@
   </div>
 
   <div class="form-group" *ngIf="detalheSolicitacao?.cadastroDataEnvioGestor != null">
-    <label class="col-md-2 control-label">Data de envio para o gestor</label>
+    <label class="col-md-8 control-label">Data de envio para o gestor</label>
     <div class="col-md-8">
       <ul class="list-group">
         <li class="list-group-item">
-           {{detalheSolicitacao?.cadastroDataEnvioGestor}}
+           {{detalheSolicitacao?.cadastroDataEnvioGestor | date: 'dd/MM/yyyy, h:mm a'}}
         </li>
       </ul>
     </div>
@@ -66,8 +55,8 @@
 
 
       <div class="row">
-        <div class="col-md-12" style="text-align: center;">
-          <h3>Requisitante</h3>
+        <div class="col-md-8" style="text-align: center;">
+          <h4>Requisitante</h4>
         </div>
       </div>
 
@@ -75,7 +64,7 @@
 
       
       <div class="form-group">
-        <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Requisitante</label>
+        <label for="UndCodTratamento" class="col-md-8 control-label">Setor/Requisitante</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -97,7 +86,7 @@
             </div>
       </div> -->
       <div class="form-group">
-        <label for="CodSolServTab" class="col-md-2 control-label">Período</label>
+        <label for="CodSolServTab" class="col-md-8 control-label">Período</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -111,7 +100,7 @@
       </div>   
 
       <div class="form-group">
-        <label for="CodSolServTab" class="col-md-2 control-label">Itinerario</label>
+        <label for="CodSolServTab" class="col-md-8 control-label">Itinerario</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -122,7 +111,7 @@
       </div>  
 
       <div class="form-group">
-        <label for="CodSolServTab" class="col-md-2 control-label">Descrição do serviço</label>
+        <label for="CodSolServTab" class="col-md-8 control-label">Descrição do serviço</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -133,7 +122,7 @@
       </div> 
 
       <div class="form-group">
-        <label for="CodSolServTab" class="col-md-2 control-label">Com motorista</label>
+        <label for="CodSolServTab" class="col-md-8 control-label">Com motorista</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -149,7 +138,7 @@
       </div> -->
 
       <div class="form-group">
-        <label for="UndCodTratamento" class="col-md-2 control-label">Passageiros</label>
+        <label for="UndCodTratamento" class="col-md-8 control-label">Passageiros</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let passageiro of detalheSolicitacao?.passageiros">
@@ -164,15 +153,15 @@
 
 
       <div class="row">
-        <div class="col-md-12" style="text-align: center;">
-          <h3>Gestor do Requisitante</h3>
+        <div class="col-md-8" style="text-align: center;">
+          <h4>Gestor do Requisitante</h4>
         </div>
       </div>
 
       <br style="clear: both;"/>  
 
       <div class="form-group">
-        <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Gestor Responsável</label>
+        <label for="UndCodTratamento" class="col-md-8 control-label">Setor/Gestor Responsável</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -183,23 +172,12 @@
         </div>
       </div>  
 
-      <!-- <div class="form-group">
-        <label for="CodRequisitante" class="col-md-2 control-label">Gestor Responsável</label>
-        <div class="col-md-8">
-          <ul class="list-group">
-            <li class="list-group-item">
-              {{detalheSolicitacao.requisitanteGestorNome}} 
-            </li>
-          </ul>
-        </div>
-      </div> -->
-
       <div class="form-group" *ngIf="detalheSolicitacao?.requisitanteGestorDeliberacaoData != null">
-        <label for="CodRequisitante" class="col-md-2 control-label">Data de Deliberação</label>
+        <label for="CodRequisitante" class="col-md-8 control-label">Data de Deliberação</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              <!-- <?php echo $solicitacao->CodUsuarioAprov->PessoaNmCompleto ?> -->
+              
               {{detalheSolicitacao?.requisitanteGestorDeliberacaoData | date: 'dd/MM/yyyy, h:mm a'}}
             </li>
           </ul>
@@ -209,8 +187,8 @@
 
 
       <div class="row">
-        <div class="col-md-12" style="text-align: center;">
-          <h3>Atendimento</h3>
+        <div class="col-md-8" style="text-align: center;">
+          <h4>Atendimento</h4>
         </div>
       </div>
 
@@ -218,7 +196,7 @@
 
 
       <div class="form-group">
-        <label for="UndCodTratamento" class="col-md-2 control-label">Setor Resonsável pelo Atendimento</label>
+        <label for="UndCodTratamento" class="col-md-8 control-label">Setor Resonsável pelo Atendimento</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -230,18 +208,18 @@
       </div>  
 
       <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null" >
-        <label for="CodRequisitante" class="col-md-2 control-label">Funcionário Deliberou</label>
+        <label for="CodRequisitante" class="col-md-8 control-label">Funcionário Deliberou</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
-              {{detalheSolicitacao?.atendimentoFuncionarioDeliberouNome}}  em {{detalheSolicitacao?.atendimentoDeliberouData}}
+              {{detalheSolicitacao?.atendimentoFuncionarioDeliberouNome}}  em {{detalheSolicitacao?.atendimentoDeliberouData  | date: 'dd/MM/yyyy, h:mm a'}}
             </li>
           </ul>
         </div>
       </div>
 
       <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
-        <label for="CodRequisitante" class="col-md-2 control-label">Parecer</label>
+        <label for="CodRequisitante" class="col-md-8 control-label">Parecer</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -252,7 +230,7 @@
       </div>
 
       <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
-        <label for="CodRequisitante" class="col-md-2 control-label">Data de saída liberada</label>
+        <label for="CodRequisitante" class="col-md-8 control-label">Data de saída liberada</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">
@@ -263,7 +241,7 @@
       </div>
 
       <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
-        <label for="CodSolServTab" class="col-md-2 control-label">Com motorista</label>
+        <label for="CodSolServTab" class="col-md-8 control-label">Com motorista</label>
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item">

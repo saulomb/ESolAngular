@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { pipe } from 'rxjs';
-import { DetalheSolicitacao } from '../detalheSolicitacao';
-import { TransporteService } from '../transporte.service';
+import { DetalheSolicitacao } from '../models/detalheSolicitacao';
+import { VeiculoService } from '../services/veiculo.service';
 
 @Component({
-  selector: 'app-detalhe-transporte',
-  templateUrl: './detalhe-transporte.component.html'
+  selector: 'app-detalhe-veiculo',
+  templateUrl: './detalhe-veiculo.component.html'
 
 })
 
@@ -20,7 +20,7 @@ export class DetalheTransporteComponent implements OnInit {
   
  
   constructor(
-              private transporteServico: TransporteService,
+              private transporteServico: VeiculoService,
               private activeRouter: ActivatedRoute) {
                }
 

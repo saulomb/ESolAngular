@@ -1,7 +1,8 @@
 <div class="container main-container">
     <h1>Login</h1>
 
-    <form novalidate (ngSubmit)="login()" [formGroup]="loginForm">
+    <!-- <form novalidate (ngSubmit)="login()" [formGroup]="loginForm"> -->
+    <form novalidate (ngSubmit)="login()">
 
         <h4>Entre na sua conta</h4>
         <hr>
@@ -16,7 +17,8 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Usuário</label>
             <div class="col-md-10">
-                <input class="form-control" id="username" type="text" placeholder="Usuário (requerido)" formControlName="username" [ngClass]="{'is-invalid': displayMessage.username }" />
+                <!-- <input class="form-control" id="username" type="text" placeholder="Usuário (requerido)" formControlName="username" [ngClass]="{'is-invalid': displayMessage.username }" /> -->
+                <input class="form-control" id="username" type="text" placeholder="Usuário (requerido)" formControlName="username" />
                 <span class="text-danger" *ngIf="displayMessage.username">
                                 <p [innerHTML]="displayMessage.username"></p>
                             </span>
@@ -26,7 +28,8 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Senha</label>
             <div class="col-md-10">
-                <input class="form-control" id="password" type="password" placeholder="Senha (requerido)" formControlName="password" [ngClass]="{'is-invalid': displayMessage.password }" />
+                <!-- <input class="form-control" id="password" type="password" placeholder="Senha (requerido)" formControlName="password" [ngClass]="{'is-invalid': displayMessage.password }" /> -->
+                <input class="form-control" id="password" type="password" placeholder="Senha (requerido)" formControlName="password"  />
                 <span class="text-danger" *ngIf="displayMessage.password">
                                 <p [innerHTML]="displayMessage.password"></p>
                             </span>

@@ -11,18 +11,20 @@ import { HomeComponent } from './navegacao/home/home.component';
 import { FooterComponent } from './navegacao/footer/footer.component';
 import { SobreComponent } from './institucional/sobre/sobre.component';
 import { rootRouterConfig } from './app.routes.module';
-import { ListaTransporteComponent } from './solicitacao/transporte/lista-transporte/lista-transporte.component';
-import { TransporteService } from './solicitacao/transporte/transporte.service';
-import { DetalheTransporteComponent } from './solicitacao/transporte/detalhe-transporte/detalhe-transporte.component';
-import { GestorSolicitacaoTransporteComponent } from './solicitacao/transporte/gestor-solicitacao-transporte/gestor-solicitacao-transporte.component';
-import { AtendimentoSolicitacaoTransporteComponent } from './solicitacao/transporte/atendimento-solicitacao-transporte/atendimento-solicitacao-transporte.component'; 
+import { ListaTransporteComponent } from './veiculo/listar/listar-veiculo.component';
+import { VeiculoService } from './veiculo/services/veiculo.service';
+import { DetalheTransporteComponent } from './veiculo/detalhe/detalhe-veiculo.component';
+import { GestorSolicitacaoTransporteComponent } from './veiculo/gestor-deliberacao/gestor-deliberacao-veiculo.component';
+import { AtendimentoSolicitacaoTransporteComponent } from './veiculo/atendimento-deliberacao/atendimento-solicitacao-veiculo.component'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { IncluirSolicitacaoComponent } from './solicitacao/transporte/incluir-solicitacao/incluir-solicitacao.component';
+import { IncluirSolicitacaoComponent } from './veiculo/incluir/incluir-veiculo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -46,10 +48,13 @@ registerLocaleData(localePt, 'pt-BR');
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    [RouterModule.forRoot(rootRouterConfig, { useHash: false})]
+    // BrowserAnimationsModule, 
+    // ToastrModule.forRoot(), 
+    [RouterModule.forRoot(rootRouterConfig, { useHash: false})],
+    
   ],
   providers: [
-    TransporteService,
+    VeiculoService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }  ,
     {provide: APP_BASE_HREF, useValue: '/'}
     ],
