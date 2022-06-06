@@ -25,6 +25,7 @@ import { IncluirSolicitacaoComponent } from './veiculo/incluir/incluir-veiculo.c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { TemplateSolicitacaoComponent } from './veiculo/template-solicitacao/template-solicitacao.component';
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -38,7 +39,8 @@ registerLocaleData(localePt, 'pt-BR');
     DetalheTransporteComponent,
     GestorSolicitacaoTransporteComponent,
     AtendimentoSolicitacaoTransporteComponent,
-    IncluirSolicitacaoComponent
+    IncluirSolicitacaoComponent,
+    TemplateSolicitacaoComponent
 
     
   ],

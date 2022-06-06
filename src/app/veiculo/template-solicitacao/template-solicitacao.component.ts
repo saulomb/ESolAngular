@@ -1,19 +1,15 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { pipe } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { DetalheSolicitacao } from '../models/detalheSolicitacao';
 import { VeiculoService } from '../services/veiculo.service';
 
 @Component({
-  selector: 'app-detalhe-veiculo',
-  templateUrl: './detalhe-veiculo.component.html'
+  selector: 'app-template-solicitacao',
+  templateUrl: './template-solicitacao.component.html'
 
 })
 
-
- 
-
-export class DetalheTransporteComponent implements OnInit {
+export class TemplateSolicitacaoComponent implements OnInit {
 
  @Input() titulo: string;
   
@@ -40,6 +36,7 @@ export class DetalheTransporteComponent implements OnInit {
     console.log("Input Titulo:",this.titulo);
     
 	});
+   
   }
 
   obterDetalheSolicitacao(solicitacaoId: number){
