@@ -11,6 +11,8 @@ import { VeiculoService } from '../services/veiculo.service';
 })
 export class GestorSolicitacaoTransporteComponent implements OnInit {
 
+  public titulo: string;
+  
   constructor(private transporteServico: VeiculoService,
     private activeRoute: ActivatedRoute,
     private router:Router) { }
@@ -20,6 +22,8 @@ export class GestorSolicitacaoTransporteComponent implements OnInit {
 
   ngOnInit()  {
 
+
+    this.titulo =  "Deliberar Solicitação de Veículo";
     const routeParams = this.activeRoute.snapshot.paramMap;
     const solicitacaoId = Number(routeParams.get('Id'));
  

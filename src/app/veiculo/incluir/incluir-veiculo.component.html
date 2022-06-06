@@ -1,13 +1,9 @@
-<div class="container main-container">
-    <!-- <div class="row">
-        <h4>Incluir da Solicitação de Veículo</h4>
-    </div> -->
 
     <div class="row">
         <div class="col-md-12" style="text-align: center;">
           <h4>Incluir Solicitação de Veículo</h4>
         </div>
-      </div>
+    </div>
  
           
 
@@ -103,7 +99,7 @@
           <div class="form-group row">
             <label class="col-md-2 control-label" for="solicitacaoComMotorista">Com Motorista</label>
             <div class="col-sm-6">
-                    <input class="form-check-input "  id="solicitacaoComMotorista" type="checkbox"  formControlName="solicitacaoComMotorista">
+                    <input class="form-check-input"  id="solicitacaoComMotorista" type="checkbox"  formControlName="solicitacaoComMotorista">
             </div>
         </div>
 
@@ -122,17 +118,20 @@
 
          <div class="form-group row">
               
-              <div class="col-sm-2 ">
+            <div class="col-md-2"></div>
+
+              <div class="col-md-6">
                 <button  type="submit" class="btn btn-success"   >Enviar Solicitação</button >
               </div>
 
-              <div class="col-sm-2">
+              <div class="col-md-offset-2">
                 <!-- <button  type="submit" class="btn btn-danger"   >Cancelar Solicitação</button > -->
                   <a class="btn btn-danger" [routerLink]="['/solicitacoes']">Cancelar Solicitação</a>
               </div>
           </div>
       </form>
 
+     <br style="clear: both;"/>
    
 
           <div class="row">
@@ -182,27 +181,6 @@
               </ul>
             </div>
           </div>  
-
-  
-  
-        <!-- <div class="row">
-          <div class="col-md-12" style="text-align: center;">
-            <h3>Gestor do Requisitante</h3>
-          </div>
-        </div>
-  
-        <br style="clear: both;"/>   -->
-  
-
-  
-     
-          <br style="clear: both;"/>
-<!--   
-          <div class="row">
-            <div class="col-md-6">
-               <button  class="btn btn-success" (click)='buscaFuncionarioRequisitantePorLotacao(16)'  >Teste</button >
-            </div>
-            
     
-         </div> -->
-  </div>
+
+

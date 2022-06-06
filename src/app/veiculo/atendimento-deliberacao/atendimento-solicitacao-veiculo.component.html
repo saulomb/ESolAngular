@@ -1,4 +1,4 @@
-<div class="container main-container">
+<!-- 
     <h4>Deliberar Atendimento de Veículo</h4>
   
           
@@ -194,36 +194,21 @@
         </div>  
 
 
-        <!-- <div class="row">
-            <div class="col-md-6">
-               <button  class="btn btn-success" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, true)"  >Aprovar</button >
-            </div>
-            <div class="col-md-6">
-                <button  class="btn btn-danger" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, false)"  >Cancelar</button >
-            </div>
-        </div> -->
-       
-          <br style="clear: both;"/>
+      
+          <br style="clear: both;"/> -->
+
+          <app-detalhe-veiculo> titulo="{{ titulo }}"</app-detalhe-veiculo>
+
+      
 
           <form novalidate (ngSubmit)="setarAtendimento()" [formGroup]="atendimentoForm">
             <div class="form-horizontal">
-    
+                 
+                
 
-                
-                
-                <!-- <label class="col-md-2 control-label" >solicitacaoId:{{detalheSolicitacao.id.toString()}}</label>
-                <label class="col-md-2 control-label" >gestorDeliberouId:{{detalheSolicitacao.requisitanteGestorId.toString()}}</label>
-                <div class="form-group">
-                    <input  type="text"  id="solicitacaoId" name="solicitacaoId"  formControlName="solicitacaoId" value={{detalheSolicitacao.id.toString()}}>
-                    <input   type="text" id="gestorDeliberouId" name="gestorDeliberouId"  formControlName="gestorDeliberouId" value={{detalheSolicitacao.requisitanteGestorId.toString()}}>
-                </div> -->
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="gestorParecer">Descrição do Parecer</label>
                     <div class="col-md-10">
-                        <!-- <input class="form-control" id="gestorParecer" type="text" 
-                        placeholder="Parecer (requerido)" 
-                        formControlName="gestorParecer"  /> -->
-
                         <textarea class="form-control" rows="3" name="gestorParecer" id="gestorParecer" formControlName="gestorParecer"></textarea>
                     </div>
           
@@ -286,5 +271,4 @@
         </form>
   
   
-  </div>
 

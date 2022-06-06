@@ -14,6 +14,8 @@ import { VeiculoService } from '../services/veiculo.service';
 })
 export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
 
+  public titulo: string  = "Deliberar Atendimento de Veículo";
+
   constructor(private transporteServico: VeiculoService,
     private activeRoute: ActivatedRoute,
     private router:Router,

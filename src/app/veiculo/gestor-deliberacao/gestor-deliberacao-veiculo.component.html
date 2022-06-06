@@ -1,5 +1,5 @@
-<div class="container main-container">
-    <h3>Deliberar Solicitação de Veículo</h3>
+
+    <!-- <h3>Deliberar Solicitação de Veículo</h3>
     <br style="clear: both;"/>
     <br style="clear: both;"/>
           
@@ -192,20 +192,20 @@
               </li>
             </ul>
           </div>
-        </div>  
+        </div>   -->
 
+        <app-detalhe-veiculo>titulo="{{titulo}}"</app-detalhe-veiculo>
 
         <div class="form-group col-md-8">
           
           <div class="float-left">
             <button  class="btn btn-success" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, true)"  >Aprovar</button >  
           </div>
-            <div class="float-right">
+          <div class="float-right">
               <button  class="btn btn-danger" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, false)"  >Cancelar</button >    
-              </div>
-         </div>
+          </div>
+       </div>
        
           <br style="clear: both;"/>
   
-  
-  </div>
+

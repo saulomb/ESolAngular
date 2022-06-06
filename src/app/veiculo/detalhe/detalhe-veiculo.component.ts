@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { DetalheSolicitacao } from '../models/detalheSolicitacao';
@@ -15,14 +15,13 @@ import { VeiculoService } from '../services/veiculo.service';
 
 export class DetalheTransporteComponent implements OnInit {
 
- 
+ @Output() titulo: string;
   
   
  
   constructor(
               private transporteServico: VeiculoService,
-              private activeRouter: ActivatedRoute) {
-               }
+              private activeRouter: ActivatedRoute) {  }
 
   public detalheSolicitacao: DetalheSolicitacao;
 
@@ -37,6 +36,8 @@ export class DetalheTransporteComponent implements OnInit {
 		// this.loadUserDetail(routeParams.id); 
     console.log(routeParams.Id);
     this.obterDetalheSolicitacao(routeParams.Id);
+
+    console.log("Input Titulo:",this.titulo);
     
 	});
    
