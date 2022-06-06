@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 import { DetalheSolicitacao } from '../models/detalheSolicitacao';
 import { VeiculoService } from '../services/veiculo.service';
 
@@ -14,7 +14,7 @@ export class GestorSolicitacaoTransporteComponent implements OnInit {
   public titulo: string;
   
   constructor(private transporteServico: VeiculoService,
-    private activeRoute: ActivatedRoute,
+    private activeRoute: ActivatedRoute,   
     private router:Router) { }
 
 
@@ -23,9 +23,9 @@ export class GestorSolicitacaoTransporteComponent implements OnInit {
   ngOnInit()  {
 
 
-    this.titulo =  "Deliberar Solicitação de Veículo";
-    const routeParams = this.activeRoute.snapshot.paramMap;
-    const solicitacaoId = Number(routeParams.get('Id'));
+    
+     const routeParams = this.activeRoute.snapshot.paramMap;
+     const solicitacaoId = Number(routeParams.get('Id'));
  
      this.transporteServico.obterDetalheSolicitacao(solicitacaoId)
      .subscribe(
