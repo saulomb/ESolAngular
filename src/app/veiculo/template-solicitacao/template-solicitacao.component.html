@@ -1,6 +1,6 @@
 
-  <h3>{{titulo}}</h3>
-  <br style="clear: both;"/>
+  <!-- <h3>{{titulo}}</h3>
+  <br style="clear: both;"/> -->
         
   <div class="row">
     <div class="col-md-8" style="text-align: center;">
@@ -34,10 +34,47 @@
   <div class="form-group">
     <label for="CodRequisitante" class="col-md-8 control-label">Situação da Solicitação</label>
     <div class="col-md-8">
-      <ul class="list-group">
-        <li class="list-group-item">
-          {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+      <ul class="list-group" [ngSwitch]="detalheSolicitacao?.solicitacaoTransporteStatus">
+        
+        <li class="list-group-item list-group-item-secondary" *ngSwitchCase="solicitacaoStatus.CADASTRO">
+          {{detalheSolicitacao?.solicitacaoTransporteStatusNome}}
+         <!-- <span class="d-block p-2 bg-primary text-white"> {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} </span> -->
         </li>
+        <li class="list-group-item list-group-item-info" *ngSwitchCase="solicitacaoStatus.DELIBARACAO_GESTOR">
+           {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li>
+        <li class="list-group-item list-group-item-dark" *ngSwitchCase="solicitacaoStatus.DELIBARACAO_TRANSPORTE">
+            {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li>
+
+        <li class="list-group-item list-group-item-warning" *ngSwitchCase="solicitacaoStatus.CANCELADO_PELO_GESTOR">
+            {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li>
+
+        <li class="list-group-item list-group-item-success" *ngSwitchCase="solicitacaoStatus.SOLICITACAO_APROVADA">
+            {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li>
+
+        <li class="list-group-item list-group-item-danger" *ngSwitchCase="solicitacaoStatus.SOLICITACAO_REPROVADA">
+            {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li>
+
+        <li class="list-group-item list-group-item-light" *ngSwitchDefault>
+             {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li>
+
+
+
+        <!-- <div [ngSwitch]="detalheSolicitacao.solicitacaoTransporteStatus">
+          
+          <a *ngSwitchCase="numType.first" href="first">first</a>
+          <a *ngSwitchCase="numType.second" href="second">second</a>
+          <a *ngSwitchCase="numType.third" href="third">third</a> 
+     </div>-->
+        
+        <!-- <li class="list-group-item">
+          {{detalheSolicitacao?.solicitacaoTransporteStatusNome}} 
+        </li> -->
       </ul>
     </div>
   </div>
@@ -207,50 +244,52 @@
         </div>
       </div>  
 
-      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null" >
-        <label for="CodRequisitante" class="col-md-8 control-label">Funcionário Deliberou</label>
-        <div class="col-md-8">
-          <ul class="list-group">
-            <li class="list-group-item">
-              {{detalheSolicitacao?.atendimentoFuncionarioDeliberouNome}}  em {{detalheSolicitacao?.atendimentoDeliberouData  | date: 'dd/MM/yyyy, h:mm a'}}
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div id="atendimento" *ngIf="exbibirAtendimento">
 
-      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
-        <label for="CodRequisitante" class="col-md-8 control-label">Parecer</label>
-        <div class="col-md-8">
-          <ul class="list-group">
-            <li class="list-group-item">
-              {{detalheSolicitacao?.atendimentoParecer}} 
-            </li>
-          </ul>
-        </div>
-      </div>
+          <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null" >
+            <label for="CodRequisitante" class="col-md-8 control-label">Funcionário Deliberou</label>
+            <div class="col-md-8">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  {{detalheSolicitacao?.atendimentoFuncionarioDeliberouNome}}  em {{detalheSolicitacao?.atendimentoDeliberouData  | date: 'dd/MM/yyyy, h:mm a'}}
+                </li>
+              </ul>
+            </div>
+          </div>
 
-      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
-        <label for="CodRequisitante" class="col-md-8 control-label">Data de saída liberada</label>
-        <div class="col-md-8">
-          <ul class="list-group">
-            <li class="list-group-item">
-              {{detalheSolicitacao?.atendimentoDataSaidaLiberado | date: 'dd/MM/yyyy, h:mm a'}}
-            </li>
-          </ul>
-        </div>
-      </div>
+          <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
+            <label for="CodRequisitante" class="col-md-8 control-label">Parecer</label>
+            <div class="col-md-8">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  {{detalheSolicitacao?.atendimentoParecer}} 
+                </li>
+              </ul>
+            </div>
+          </div>
 
-      <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
-        <label for="CodSolServTab" class="col-md-8 control-label">Com motorista</label>
-        <div class="col-md-8">
-          <ul class="list-group">
-            <li class="list-group-item">
-              {{detalheSolicitacao?.atendimentoComMotoristaFormatado}}
-            </li>
-          </ul>
-        </div>
-      </div> 
+          <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
+            <label for="CodRequisitante" class="col-md-8 control-label">Data de saída liberada</label>
+            <div class="col-md-8">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  {{detalheSolicitacao?.atendimentoDataSaidaLiberado | date: 'dd/MM/yyyy, h:mm a'}}
+                </li>
+              </ul>
+            </div>
+          </div>
 
+          <div class="form-group" *ngIf="detalheSolicitacao?.atendimentoDeliberouData != null">
+            <label for="CodSolServTab" class="col-md-8 control-label">Com motorista</label>
+            <div class="col-md-8">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  {{detalheSolicitacao?.atendimentoComMotoristaFormatado}}
+                </li>
+              </ul>
+            </div>
+          </div> 
+    </div>
         <br style="clear: both;"/>
 
         <!-- <div class="col-sm-2">

@@ -241,8 +241,15 @@
         <h3>Detalhamento da solicitação de veículo</h3>
         <br style="clear: both;"/>
 
-      <app-template-solicitacao></app-template-solicitacao>
+      <app-template-solicitacao [detalheSolicitacao]="detalheSolicitacao"></app-template-solicitacao>
 
-        <div class="col-sm-2">
-           <a class="btn btn-primary" [routerLink]="['/solicitacoes']">Voltar</a>
+      <div class="form-group row col-md-8">
+      
+      <div class="col-sm-6">
+           <button class="btn btn-primary" [routerLink]="['/solicitacoes']">Voltar</button>
         </div>
+
+        <div class="col-md-offset-4 float-right" *ngIf="detalheSolicitacao?.solicitacaoTransporteStatus == 1">
+          <button  class="btn btn-danger"  (click)="enviarParaDeliberacao(detalheSolicitacao.id)"  >Enviar para Deliberação do gestor</button >    
+        </div>
+      </div>  

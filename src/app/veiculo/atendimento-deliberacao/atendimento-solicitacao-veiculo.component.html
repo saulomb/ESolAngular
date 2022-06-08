@@ -201,7 +201,7 @@
         <h3>Deliberação do atendimento</h3>
         <br style="clear: both;"/>
 
-          <app-template-solicitacao></app-template-solicitacao>
+          <app-template-solicitacao [detalheSolicitacao]="detalheSolicitacao" [exbibirAtendimento]="exbibirAtendimento"></app-template-solicitacao>
 
       
 
@@ -212,7 +212,7 @@
 
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="gestorParecer">Descrição do Parecer</label>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <textarea class="form-control" rows="3" name="gestorParecer" id="gestorParecer" formControlName="gestorParecer"></textarea>
                     </div>
           

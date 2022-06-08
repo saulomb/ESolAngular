@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { ContaRoutingModule } from './conta.route';
 import { ContaAppComponent } from './conta.app.component';
 import { ContaService } from './services/conta.service';
-import { ContaGuard } from './models/conta.guard';
+//import { ContaGuard } from './models/conta.guard';
 
 
 
@@ -32,8 +32,8 @@ import { ContaGuard } from './models/conta.guard';
     
   ],
   providers:[
-    ContaService,
-    ContaGuard
+    ContaService
+   // ContaGuard
   ]
 })
 export class ContaModule { }

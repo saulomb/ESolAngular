@@ -1,7 +1,11 @@
 <h2>Lista Solicitações de Veículo</h2>
 
-<div class="row">
-    <a class="btn btn-success" [routerLink]="['/incluir-solicitacao']">Incluir Solicitação</a>
+<div class="row " >
+    <div class="form-group col-md-12">
+        <div  class="float-right"> 
+            <a class="btn btn-success" [routerLink]="['/incluir-solicitacao']">Incluir Solicitação</a>
+        </div>
+    </div>
 </div>
 
 <div class="row text-center">
@@ -35,15 +39,15 @@
                 <!-- <td>{{ solicitacao.solicitacaoStatus }}</td>  -->
                 <td>{{ solicitacao.solicitacaoStatusNome }}</td> 
                 <td>
-                    <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao', solicitacao.id]">Detalhar</a>
+                    <button class="btn btn-primary" [routerLink]="['/detalhe-solicitacao', solicitacao.id]">Detalhar</button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <a class="btn btn-success" [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">Deliberar</a>
+                    <button class="btn btn-success" [disabled]="solicitacao.solicitacaoStatus != 2"  [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">Deliberar</button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <a class="btn btn-secondary" [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">Atendimento</a>
+                    <button class="btn btn-secondary" [disabled]="solicitacao.solicitacaoStatus != 3" [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">Atendimento</button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>                
             </tr>

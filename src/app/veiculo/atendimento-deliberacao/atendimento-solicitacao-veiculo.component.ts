@@ -14,16 +14,20 @@ import { VeiculoService } from '../services/veiculo.service';
 })
 export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
 
-  public titulo: string  = "Deliberar Atendimento de Veículo";
+  //public titulo: string  = "Deliberar Atendimento de Veículo";
+  public exbibirAtendimento:boolean = false; 
+
+  atendimentoForm: FormGroup;
+   
+  public detalheSolicitacao: DetalheSolicitacao;
+  public atendimentoSolicitacao: AtendimentoSolicitacao;
 
   constructor(private transporteServico: VeiculoService,
     private activeRoute: ActivatedRoute,
     private router:Router,
     private fb: FormBuilder) { }
 
-    atendimentoForm: FormGroup;
-    public detalheSolicitacao: DetalheSolicitacao;
-    public atendimentoSolicitacao: AtendimentoSolicitacao;
+
     
 
     // atendimentoForm = this.fb.group({
@@ -50,22 +54,24 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
          this.detalheSolicitacao = detalheSolicitacao;
          console.log("Atendimento Solicitação:",this.detalheSolicitacao);
          console.log("Atendimento Solicitação API:",detalheSolicitacao);
-         
+
+
        },
        error=>console.log(error)
        
      );
     
-    
      this.atendimentoForm = this.fb.group({
       solicitacaoId:[solicitacaoId],
       gestorDeliberouId:[userId],
-      gestorParecer: [''],
+      gestorParecer: [this.detalheSolicitacao?.atendimentoParecer],
       dataSaidaLiberada: [],
       horaSaidaLiberada: [],
       comMotorista: [false],
       atendimentoStatus: [1],
     });
+     
+
     
     }
 

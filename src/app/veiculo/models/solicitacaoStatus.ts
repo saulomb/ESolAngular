@@ -1,0 +1,9 @@
+export enum SolicitacaoStatus {
+    CADASTRO = 1,
+    DELIBARACAO_GESTOR = 2,
+    DELIBARACAO_TRANSPORTE = 3,
+    CANCELADO_PELO_GESTOR = 4,
+    SOLICITACAO_APROVADA = 7,
+    SOLICITACAO_REPROVADA = 8
+    
+}

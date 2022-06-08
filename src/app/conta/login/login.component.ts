@@ -62,12 +62,12 @@ export class LoginComponent implements OnInit {
   ngAfterViewInit(): void {
 
 
-    // let controlBlurs: Observable<any>[] = this.formInputElements
-    //     .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+    let controlBlurs: Observable<any>[] = this.formInputElements
+        .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
 
-    // merge(...controlBlurs).subscribe(() => {
-    //     this.displayMessage = this.genericValidator.processarMensagens(this.loginForm);
-    // });
+    merge(...controlBlurs).subscribe(() => {
+        this.displayMessage = this.genericValidator.processarMensagens(this.loginForm);
+    });
   }
 
   login(){
@@ -93,12 +93,12 @@ export class LoginComponent implements OnInit {
     //console.log('response: ', response);
     this.contaService.LocalStorage.salvarDadosLocaisUsuario(response, this.usuario);
 
-    // let toast = this.toastr.success('Registro realizado com sucesso','Bem vindo!!!');
-    // if (toast){
-    //   toast.onHidden.subscribe(()=>{
-    //     this.router.navigate(['/home']);
-    //   })
-    // }
+    let toast = this.toastr.success('Registro realizado com sucesso','Bem vindo!!!');
+    if (toast){
+      toast.onHidden.subscribe(()=>{
+        this.router.navigate(['/home']);
+      })
+    }
 
     this.toastr.success('Login realizado com sucesso!', 'Bem Vindo!');
     this.router.navigate(['/home']);

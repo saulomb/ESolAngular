@@ -59,6 +59,15 @@ export class VeiculoService extends BaseService {
        
       }
 
+      enviarSolicitacaoParaGestor(solicitacaoId: number)  {
+        
+        const queryParams = new HttpParams()
+          .set('solicitacaoId', solicitacaoId.toString())
+        
+        return this.http.post(this.UrlServiceV1 +"transporte/enviar-solicitacao-gestor",null,  { params: queryParams });
+     
+    }
+
       atendimentoSolicitacao(atendimento: AtendimentoSolicitacao)  {
 
         return this.http.post(this.UrlServiceV1 +"transporte/atendimento-solicitacao/",atendimento);
