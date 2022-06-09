@@ -33,6 +33,9 @@ import { TemplateSolicitacaoComponent } from './veiculo/template-solicitacao/tem
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './conta/login/login.component';
+import { ContaService } from './conta/services/conta.service';
+import { MenuLoginComponent } from './navegacao/menu-login/menu-login.component';
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -47,7 +50,9 @@ registerLocaleData(localePt, 'pt-BR');
     GestorSolicitacaoTransporteComponent,
     AtendimentoSolicitacaoTransporteComponent,
     IncluirSolicitacaoComponent,
-    TemplateSolicitacaoComponent
+    TemplateSolicitacaoComponent,
+    MenuLoginComponent,
+    LoginComponent
 
     
   ],
@@ -65,6 +70,7 @@ registerLocaleData(localePt, 'pt-BR');
   ],
   providers: [
     VeiculoService,
+    ContaService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }  ,
     {provide: APP_BASE_HREF, useValue: '/'}
     ],

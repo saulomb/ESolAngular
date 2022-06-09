@@ -2,12 +2,12 @@
     <li *ngSwitchCase="false" class="nav-item" style="padding-right: 30px;">
         <a class="btn btn-primary" [routerLink]="['/conta/login']">Entrar</a>
     </li>
-    <li *ngSwitchCase="false" class="nav-item">
+    <!-- <li *ngSwitchCase="false" class="nav-item">
         <a class="btn btn-success" [routerLink]="['/conta/cadastro']">Crie sua conta</a>
-    </li>
+    </li> -->
 
     <li *ngSwitchCase="true" class="nav-item">
-        <a class="nav-link text-dark" id="saudacaoUsuario" href="javascript:void(0)">{{ email }}</a>
+        <a class="nav-link text-dark" id="saudacaoUsuario" href="javascript:void(0)">{{ login }}</a>
     </li>
     <li *ngSwitchCase="true" class="nav-item">
         <a class="nav-link text-dark" href="javascript:void(0)" (click)="logout()">

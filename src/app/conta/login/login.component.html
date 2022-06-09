@@ -2,26 +2,28 @@
     <h1>Login</h1>
 
     <!-- <form novalidate (ngSubmit)="login()" [formGroup]="loginForm"> -->
-    <form novalidate (ngSubmit)="login()">
+    <form novalidate (ngSubmit)="efetuarLogin()" [formGroup]="loginForm">
 
         <h4>Entre na sua conta</h4>
         <hr>
 
-        <div class="alert alert-danger" *ngIf="errors.length > 0">
+        
+
+        <!-- <div class="alert alert-danger" *ngIf="errors.length > 0">
             <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
             <ul>
                 <li *ngFor="let error of errors">{{ error }}</li>
             </ul>
-        </div>
+        </div> -->
 
         <div class="form-group">
             <label class="col-md-2 control-label">Usuário</label>
             <div class="col-md-10">
                 <!-- <input class="form-control" id="username" type="text" placeholder="Usuário (requerido)" formControlName="username" [ngClass]="{'is-invalid': displayMessage.username }" /> -->
-                <input class="form-control" id="username" type="text" placeholder="Usuário (requerido)" formControlName="username" />
-                <span class="text-danger" *ngIf="displayMessage.username">
+                <input class="form-control" id="login" type="text" placeholder="Usuário (requerido)" formControlName="login" />
+                <!-- <span class="text-danger" *ngIf="displayMessage.username">
                                 <p [innerHTML]="displayMessage.username"></p>
-                            </span>
+                            </span> -->
             </div>
         </div>
 
@@ -29,10 +31,10 @@
             <label class="col-md-2 control-label">Senha</label>
             <div class="col-md-10">
                 <!-- <input class="form-control" id="password" type="password" placeholder="Senha (requerido)" formControlName="password" [ngClass]="{'is-invalid': displayMessage.password }" /> -->
-                <input class="form-control" id="password" type="password" placeholder="Senha (requerido)" formControlName="password"  />
-                <span class="text-danger" *ngIf="displayMessage.password">
+                <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha"  />
+                <!-- <span class="text-danger" *ngIf="displayMessage.password">
                                 <p [innerHTML]="displayMessage.password"></p>
-                            </span>
+                            </span> -->
             </div>
         </div>
 

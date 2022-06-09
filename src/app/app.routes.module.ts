@@ -14,10 +14,7 @@ export const rootRouterConfig: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full' },
     {path: 'home', component: HomeComponent},
     {path: 'sobre', component: SobreComponent},
-    {path: 'conta',
-    loadChildren: ()=> import('./conta/conta.module')
-      .then(m=> m.ContaModule)
-    },
+    {path: 'conta/login', component: LoginComponent },
     
     {path: 'solicitacoes', component: ListaTransporteComponent },
     {path: 'incluir-solicitacao', component: IncluirSolicitacaoComponent },
