@@ -8,16 +8,16 @@ export class LocalStorageUtils {
         return JSON.parse(localStorage.getItem('cerb.login'));
     }
 
-    public salvarDadosLocaisUsuario(response: any, usuario: Usuario) {
+    public salvarDadosLocaisUsuario(response:  Usuario) {
 
-      console.log('Token: ',response);
-      console.log('Usuario: ', usuario.login)
-      this.salvarTokenUsuario(response);
-      this.salvarUsuario(usuario);
+      //console.log('Token: ',response);
+      console.log('Usuario: ', response.login)
+      //this.salvarTokenUsuario(response);
+      this.salvarUsuario(response);
     }
 
     public limparDadosLocaisUsuario() {
-        localStorage.removeItem('cerb.token');
+        //localStorage.removeItem('cerb.token');
         localStorage.removeItem('cerb.login');
         localStorage.removeItem('cerb.lotacaoFisicaId');
         localStorage.removeItem('cerb.lotacaoFisicaSigla');

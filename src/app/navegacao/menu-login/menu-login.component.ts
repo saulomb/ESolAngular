@@ -16,13 +16,13 @@ export class MenuLoginComponent {
   constructor(private router: Router) {  }
 
   usuarioLogado(): boolean {
-    this.token = this.localStorageUtils.obterTokenUsuario();
+   // this.token = this.localStorageUtils.obterTokenUsuario();
     this.user = this.localStorageUtils.obterUsuario();
 
     if (this.user)
       this.login = this.user;
 
-    return this.token !== null;
+    return this.user !== null;
   }
 
   logout() {

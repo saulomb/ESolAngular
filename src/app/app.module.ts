@@ -62,9 +62,8 @@ registerLocaleData(localePt, 'pt-BR');
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    BrowserAnimationsModule, 
     ToastrModule.forRoot(),
-    // BrowserAnimationsModule, 
-    // ToastrModule.forRoot(), 
     [RouterModule.forRoot(rootRouterConfig, { useHash: false})],
     
   ],
