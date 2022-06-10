@@ -10,17 +10,17 @@ export class MenuLoginComponent {
 
   token: string = "";
   user: any;
-  login: string = "";
+  //login: string = "";
   localStorageUtils = new LocalStorageUtils();
 
   constructor(private router: Router) {  }
 
   usuarioLogado(): boolean {
    // this.token = this.localStorageUtils.obterTokenUsuario();
-    this.user = this.localStorageUtils.obterUsuario();
+    this.user = this.localStorageUtils.obterLogin();
 
-    if (this.user)
-      this.login = this.user;
+    // if (this.user)
+    //   this.login = this.user;
 
     return this.user !== null;
   }

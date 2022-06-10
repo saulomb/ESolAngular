@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy  } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/conta/models/usuario';
+import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { Funcionario } from '../models/funcionario';
 import { IncluirSolicitacao } from '../models/incluirSolicitacao';
 import { Lotacao } from '../models/lotacao';
@@ -26,6 +28,10 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
   public gestorLotacaoRequistanteId: number;
 
+  public usuarioLogado: Usuario;
+
+  private localStorageUtils = new LocalStorageUtils();
+
   constructor(private transporteServico: VeiculoService,
     private router:Router,
     private fb: FormBuilder) {
@@ -37,6 +43,10 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
   ngOnInit() {
 
+    this.usuarioLogado = this.localStorageUtils.obterUsuario();
+
+    console.log("Usuario Logado:", this.usuarioLogado);
+    
     const userId = 646;
     const lotacaoCadastroId = 16;
     const cadastroNome = "SAULO MENDONÇA BEZERRA";
@@ -44,8 +54,10 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
     const userAtendimentoId = 21069;
     const lotacaoAtendimentoId = 22;
-    const atendimentoNome = "MARCELO MOREIRA CARDOSO";
+    const atendimentoNome = "MARCELOS CARDOSO";
     const atendimentoLotacaoSigla = "TRANSPORTE";
+
+
 
     //this.solicitacaoPassageiros = new Array<Funcionario>();
 
@@ -56,13 +68,13 @@ export class IncluirSolicitacaoComponent implements OnInit {
     
 
     this.solicitacaoForm = this.fb.group({
-      solicitacaoUnidadeCadastroId:[lotacaoCadastroId],
-      solicitacaoFuncionarioCadastroId:[userId],
-      solicitacaoCadastroFuncionarioNome: [cadastroNome],
-      solicitacaoCadastroUnidadeSigla: [cadastroLotacaoSigla],
+      solicitacaoUnidadeCadastroId:[this.usuarioLogado.lotacaoFisicaId],
+      solicitacaoFuncionarioCadastroId:[this.usuarioLogado.id],
+      solicitacaoCadastroFuncionarioNome: [this.usuarioLogado.nome],
+      solicitacaoCadastroUnidadeSigla: [this.usuarioLogado.lotacaoFisicaSigla],
       solicitacaoRequisitanteId: [],
-      solicitacaoRequisitanteUnidadeId: [lotacaoCadastroId],
-      solicitacaoRequisitanteGestorId: [userId],
+      solicitacaoRequisitanteUnidadeId: [this.usuarioLogado.lotacaoFisicaId],
+      solicitacaoRequisitanteGestorId: [this.usuarioLogado.gestorResponsavelId],
       solicitacaoDataSaida: [],
       solicitacaoDataRetorno: [],
       solicitacaoHoraSaida: [],

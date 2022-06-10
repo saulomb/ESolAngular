@@ -5,6 +5,8 @@ export interface Usuario {
     nome: string,
     lotacaoFisicaId: number,
     lotacaoFisicaSigla: string,
+    gestorResponsavelId:number,
+    lotacaoSuperiorId:number,
     perfilGestor: boolean,
     perfilAtendimento: boolean
   }

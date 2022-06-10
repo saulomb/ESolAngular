@@ -23,7 +23,7 @@
                 <input class="form-control" id="login" type="text" placeholder="Usuário (requerido)" formControlName="login"
                   [ngClass]="{'is-invalid': loginForm.get('login').errors && (loginForm.get('login').dirty || loginForm.get('login').touched) }" />
                 <span class="text-danger" *ngIf="loginForm.get('login').errors && (loginForm.get('login').dirty || loginForm.get('login').touched)">
-                      <p>Preencha o login do usuário </p>
+                      <p>Preencha seu login </p>
                 </span>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha" 
                 [ngClass]="{'is-invalid': loginForm.get('senha').errors && (loginForm.get('senha').dirty || loginForm.get('senha').touched) }" />
                 <span class="text-danger" *ngIf="loginForm.get('senha').errors && (loginForm.get('senha').dirty || loginForm.get('senha').touched)">
-                    <p>Preencha a senha do usuário </p>
+                    <p>Preencha sua senha </p>
               </span>
             </div>
         </div>

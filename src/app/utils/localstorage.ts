@@ -4,8 +4,12 @@ export class LocalStorageUtils {
 
 
 
-    public obterUsuario() {
+    public obterLogin() {
         return JSON.parse(localStorage.getItem('cerb.login'));
+    }
+
+    public  obterUsuario() {
+        return JSON.parse(localStorage.getItem('cerb.usuario'));
     }
 
     public salvarDadosLocaisUsuario(response:  Usuario) {
@@ -23,6 +27,7 @@ export class LocalStorageUtils {
         localStorage.removeItem('cerb.lotacaoFisicaSigla');
         localStorage.removeItem('cerb.perfilGestor');
         localStorage.removeItem('cerb.perfilAtendimento');
+        localStorage.removeItem('cerb.usuario');
     }
 
     public obterTokenUsuario(): string {
@@ -40,6 +45,8 @@ export class LocalStorageUtils {
         localStorage.setItem('cerb.lotacaoFisicaSigla', JSON.stringify(usuario.lotacaoFisicaSigla));
         localStorage.setItem('cerb.perfilGestor', JSON.stringify(usuario.perfilGestor));
         localStorage.setItem('cerb.perfilAtendimento', JSON.stringify(usuario.perfilAtendimento));
+        localStorage.setItem('cerb.usuario', JSON.stringify(usuario));
+
     }
 
 }
