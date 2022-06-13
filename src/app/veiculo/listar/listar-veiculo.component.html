@@ -39,15 +39,21 @@
                 <!-- <td>{{ solicitacao.solicitacaoStatus }}</td>  -->
                 <td>{{ solicitacao.solicitacaoStatusNome }}</td> 
                 <td>
-                    <button class="btn btn-primary" [routerLink]="['/detalhe-solicitacao', solicitacao.id]">Detalhar</button>
+                    <button class="btn btn-primary" [routerLink]="['/detalhe-solicitacao', solicitacao.id]">
+                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    </button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <button class="btn btn-success" [disabled]="solicitacao.solicitacaoStatus != 2"  [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">Deliberar</button>
+                    <button class="btn btn-warning" [disabled]="solicitacao.solicitacaoStatus != 2"  [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">
+                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                    </button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <button class="btn btn-secondary" [disabled]="solicitacao.solicitacaoStatus != 3" [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">Atendimento</button>
+                    <button class="btn btn-secondary" [disabled]="solicitacao.solicitacaoStatus != 3" [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                    </button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>                
             </tr>

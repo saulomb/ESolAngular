@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
 
     //console.log('response: ', response);
     this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
+    this.contaService.LocalStorage.salvarDadosLocaisAtendimento(this.usuario.lotacaoAtendimento);
 
 
     let toast = this.toastr.success('Login realizado com sucesso','Bem vindo!!!');

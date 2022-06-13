@@ -21,9 +21,13 @@ export class VeiculoService extends BaseService {
   constructor(private http: HttpClient){ super();}
   
   
-      obterSolicitacoes(): Observable<transporteSolicitado[]> {
+      obterMinhasSolicitacoes(): Observable<transporteSolicitado[]> {
+
+          let usuarioLogado = this.LocalStorage.obterUsuario();
+
+          if (!usuarioLogado.lotacaoFisicaId) return;
           
-          return this.http.get<transporteSolicitado[]>(this.UrlServiceV1 +"transporte/solicitacoes-por-lotacao/16", this.ObterHeaderJson());
+          return this.http.get<transporteSolicitado[]>(this.UrlServiceV1 +"transporte/solicitacoes-por-lotacao/"+usuarioLogado.lotacaoFisicaId.toString(), this.ObterHeaderJson());
            
       }
 

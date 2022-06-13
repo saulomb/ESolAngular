@@ -3,5 +3,7 @@ export class Lotacao {
     sigla: string;
     descricao:string;
     inativa: boolean;
+    gestorResponsavelId:number;
+    gestorResponsavelNome: string;
                                                          
 }

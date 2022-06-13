@@ -20,7 +20,7 @@ export class ListaTransporteComponent implements OnInit {
 
 
   ngOnInit() {
-    this.transporteServico.obterSolicitacoes()
+    this.transporteServico.obterMinhasSolicitacoes()
       .subscribe(
         solicitacoes =>{
           this.solicitacoes = solicitacoes;

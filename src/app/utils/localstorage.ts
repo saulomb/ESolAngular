@@ -1,15 +1,20 @@
 import { Usuario } from "../conta/models/usuario";
+import { Lotacao } from "../veiculo/models/lotacao";
 
 export class LocalStorageUtils {
 
 
 
-    public obterLogin() {
+    public obterLogin() : string {
         return JSON.parse(localStorage.getItem('cerb.login'));
     }
 
-    public  obterUsuario() {
+    public  obterUsuario() : Usuario {
         return JSON.parse(localStorage.getItem('cerb.usuario'));
+    }
+
+    public obterLotacaoAtendimento() : Lotacao {
+        return JSON.parse(localStorage.getItem('cerb.atendimento'));
     }
 
     public salvarDadosLocaisUsuario(response:  Usuario) {
@@ -20,6 +25,14 @@ export class LocalStorageUtils {
       this.salvarUsuario(response);
     }
 
+    public salvarDadosLocaisAtendimento(response:  Lotacao) {
+
+        //console.log('Token: ',response);
+        console.log('Atendimento: ', response)
+        //this.salvarTokenUsuario(response);
+        this.salvarLotacaoAtendimento(response);
+      }
+
     public limparDadosLocaisUsuario() {
         //localStorage.removeItem('cerb.token');
         localStorage.removeItem('cerb.login');
@@ -28,6 +41,7 @@ export class LocalStorageUtils {
         localStorage.removeItem('cerb.perfilGestor');
         localStorage.removeItem('cerb.perfilAtendimento');
         localStorage.removeItem('cerb.usuario');
+        localStorage.removeItem('cerb.atendimento');
     }
 
     public obterTokenUsuario(): string {
@@ -46,6 +60,11 @@ export class LocalStorageUtils {
         localStorage.setItem('cerb.perfilGestor', JSON.stringify(usuario.perfilGestor));
         localStorage.setItem('cerb.perfilAtendimento', JSON.stringify(usuario.perfilAtendimento));
         localStorage.setItem('cerb.usuario', JSON.stringify(usuario));
+
+    }
+
+    public salvarLotacaoAtendimento(atendimento: Lotacao) {
+        localStorage.setItem('cerb.atendimento', JSON.stringify(atendimento));
 
     }
 

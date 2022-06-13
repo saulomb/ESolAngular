@@ -21,49 +21,33 @@ export class IncluirSolicitacaoComponent implements OnInit {
   solicitacaoForm: FormGroup;
   public solicitacao: IncluirSolicitacao;
   public lotacoes: Lotacao[];
+  public lotacoesPassageiro: Lotacao[];
   public requisitanteFuncionario: Funcionario[];
   public passageiroFuncionario: Funcionario[];
   public passageiroSelecinadoId:number;
+  public passageiroLotacaoSelecionadoId:number;
   public solicitacaoPassageiros: Funcionario[] = [] ;
 
   public gestorLotacaoRequistanteId: number;
 
   public usuarioLogado: Usuario;
+  public lotacaoAtendimento: Lotacao;
 
   private localStorageUtils = new LocalStorageUtils();
 
   constructor(private transporteServico: VeiculoService,
     private router:Router,
-    private fb: FormBuilder) {
-
-      //this.solicitacao = new IncluirSolicitacao();
-      
-
-     }
+    private fb: FormBuilder) { }
 
   ngOnInit() {
 
     this.usuarioLogado = this.localStorageUtils.obterUsuario();
+    this.lotacaoAtendimento = this.localStorageUtils.obterLotacaoAtendimento();
 
     console.log("Usuario Logado:", this.usuarioLogado);
+    console.log("Lotacao Atendimento:", this.lotacaoAtendimento);
     
-    const userId = 646;
-    const lotacaoCadastroId = 16;
-    const cadastroNome = "SAULO MENDONÇA BEZERRA";
-    const cadastroLotacaoSigla = "CTINF";
-
-    const userAtendimentoId = 21069;
-    const lotacaoAtendimentoId = 22;
-    const atendimentoNome = "MARCELOS CARDOSO";
-    const atendimentoLotacaoSigla = "TRANSPORTE";
-
-
-
-    //this.solicitacaoPassageiros = new Array<Funcionario>();
-
-    //this.solicitacaoPassageiros =  [...this.solicitacaoPassageiros];
-
-    
+ 
     
     
 
@@ -82,26 +66,31 @@ export class IncluirSolicitacaoComponent implements OnInit {
       solicitacaoItinerario: [],
       solicitacaoServicoDescricao: [],
       solicitacaoComMotorista: [],
+     // solicitacaoPassageiroUnidadeId: [this.usuarioLogado.lotacaoFisicaId],
       
-      atendimentoUnidadeResponsavelId: [lotacaoAtendimentoId],
-      atendimentoGetorReponsavelId:[userAtendimentoId ],
-      atendimentoUnidadeSigla:[atendimentoNome],
-      atendimentFuncionarioGestorNome:[atendimentoLotacaoSigla]
+      atendimentoUnidadeResponsavelId: [this.lotacaoAtendimento.id],
+      atendimentoGetorReponsavelId:[this.lotacaoAtendimento.gestorResponsavelId ],
+      atendimentoUnidadeSigla:[this.lotacaoAtendimento.sigla],
+      atendimentFuncionarioGestorNome:[this.lotacaoAtendimento.gestorResponsavelNome]
       
 
     });
+
+    //this.passageiroSelecinadoId = this.usuarioLogado.lotacaoFisicaId;
 
     this.transporteServico.obterLotacoes()
           .subscribe(
             lotacoes =>{
               this.lotacoes = lotacoes;
+              this.lotacoesPassageiro = lotacoes;
               console.log("Carregando lotações:",lotacoes);
             },
             error=>console.log(error)
             
           );
 
-    this.buscaRequisitantePorLotacao(lotacaoCadastroId);     
+    this.buscaRequisitantePorLotacao(this.usuarioLogado.lotacaoFisicaId); 
+    this.buscaPassageiroPorLotacao(this.usuarioLogado.lotacaoFisicaId);       
   }
 
 

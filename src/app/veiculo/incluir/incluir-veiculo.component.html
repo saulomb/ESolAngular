@@ -40,12 +40,9 @@
           <label for="UndCodTratamento" class="col-sm-2 col-form-label ">Setor do Requisitante</label>
           <div class="col-sm-8">
             <select name="solicitacaoRequisitanteUnidadeId" id="solicitacaoRequisitanteUnidadeId" 
-            class="form-control"  formControlName="solicitacaoRequisitanteUnidadeId"
+            class="form-control"  formControlName="solicitacaoRequisitanteUnidadeId" disabled="true"
             (change)="buscaRequisitantePorLotacao($event.target.value)">
-                <!-- <option value="0">CTINF</option>
-                <option value="1">DP</option>
-                <option value="2">DSA</option> -->
-                <option [value]="lotacao.id" *ngFor="let lotacao of lotacoes" >{{lotacao.sigla}}</option>
+                <option [value]="lotacao?.id" *ngFor="let lotacao of lotacoes" >{{lotacao?.sigla}}</option>
                    
             </select>
           </div>
@@ -57,7 +54,7 @@
                 <select name="solicitacaoRequisitanteId" id="solicitacaoRequisitanteId"  
                    class="form-control" formControlName="solicitacaoRequisitanteId" > 
  
-                    <option [ngValue]="requisitante.id" *ngFor="let requisitante of requisitanteFuncionario" >{{requisitante.nome}}</option>
+                    <option [ngValue]="requisitante?.id" *ngFor="let requisitante of requisitanteFuncionario" >{{requisitante?.nome}}</option>
                 </select>
               </div>
         </div>
@@ -108,7 +105,7 @@
             <div class="col-sm-8">
               <ul class="list-group">
                 <li class="list-group-item">
-                  <b>Setor</b> - Gestor Responsável             
+                  <b>{{lotacaoAtendimento?.sigla}}</b> - {{lotacaoAtendimento?.gestorResponsavelNome}}      
                 </li>
               </ul>
             </div>
@@ -129,7 +126,7 @@
                   <a class="btn btn-danger" [routerLink]="['/solicitacoes']">Cancelar Solicitação</a>
             </div>
          </div>
-      </form>
+    </form>
 
      <br style="clear: both;"/>
    
@@ -143,16 +140,20 @@
           <br style="clear: both;"/>
 
           <div class="form-group row">
-            <label for="solicitacaoPassageiroSetor" class="col-md-2 control-label ">Setor do passageiro</label>
+            <label for="solicitacaoPassageiroUnidadeId" class="col-md-2 control-label ">Setor do passageiro</label>
             <div class="col-sm-8">
-              <select name="solicitacaoPassageiroSetor" id="solicitacaoPassageiroSetor" 
-               class="form-control"   (change)="buscaPassageiroPorLotacao($event.target.value)">
-                  <option [value]="0">Selecione a lotacao</option>
-                  <option [value]="lotacao.id" *ngFor="let lotacao of lotacoes" >{{lotacao.sigla}}</option>
+              <select name="solicitacaoPassageiroUnidadeId" id="solicitacaoPassageiroUnidadeId" 
+               class="form-control"  
+               (change)="buscaPassageiroPorLotacao($event.target.value)">
+                  <option [value]="lotacao?.id" [selected]="lotacao.id === usuarioLogado.lotacaoFisicaId" *ngFor="let lotacao of lotacoesPassageiro" >{{lotacao?.sigla}}</option>
                    
               </select>
             </div>
           </div>  
+
+        
+
+
 
           <div class="form-group row">
             <label for="solicitacaoPassageiroFuncionario" class="col-md-2 control-label ">Passageiro</label>
@@ -160,7 +161,7 @@
               <select  name="solicitacaoPassageiroFuncionario" id="solicitacaoPassageiroFuncionario"  
               class="form-control"  (change)="setaPassageiroSelecionado($event)">
                 
-                 <option [value]="passageiro.id" *ngFor="let passageiro of passageiroFuncionario" >{{passageiro.nome}}</option>
+                 <option [value]="passageiro?.id"     *ngFor="let passageiro of passageiroFuncionario" >{{passageiro?.nome}}</option>
               </select>
              
             </div>
@@ -174,8 +175,8 @@
             <div class="col-md-8">
               <ul class="list-group">
                 <li class="list-group-item" *ngFor="let passageiro of solicitacaoPassageiros">
-                    <b>{{passageiro.lotacaoFisicaSigla}}</b> - {{passageiro.nome}} - {{passageiro.id}}
-                    <a class="btn btn-danger float-right" (click)="removerPassageiro(passageiro.id)">X</a>             
+                    <b>{{passageiro?.lotacaoFisicaSigla}}</b> - {{passageiro?.nome}} - {{passageiro?.id}}
+                    <a class="btn btn-danger float-right" (click)="removerPassageiro(passageiro?.id)">X</a>             
                 </li> 
 
               </ul>

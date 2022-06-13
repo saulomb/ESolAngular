@@ -1,3 +1,5 @@
+import { Lotacao } from "src/app/veiculo/models/lotacao";
+
 export interface Usuario {
 
     id: number,
@@ -8,7 +10,9 @@ export interface Usuario {
     gestorResponsavelId:number,
     lotacaoSuperiorId:number,
     perfilGestor: boolean,
-    perfilAtendimento: boolean
+    perfilAtendimento: boolean,
+    lotacaoAtendimento: Lotacao,
+    podeAprovarAtendimento: boolean 
   }
 
 
