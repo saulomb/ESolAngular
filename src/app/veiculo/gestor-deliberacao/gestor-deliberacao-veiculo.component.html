@@ -1,217 +1,15 @@
-
-    <!-- <h3>Deliberar Solicitação de Veículo</h3>
-    <br style="clear: both;"/>
-    <br style="clear: both;"/>
-          
-    <div class="row">
-      <div class="col-md-8" style="text-align: center;">
-        <h4>Cadastro da Solicitação</h4>
-      </div>
+<div class="card">
+    <div class="card-header">
+           <h3>Deliberação do gestor</h3>
     </div>
-  
-    <div class="form-group">
-      <label class="col-md-2 control-label">Setor/Nome</label>
-      <div class="col-md-8">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <b>{{detalheSolicitacao.cadastroUnidadeSigla}}</b> -
-            {{detalheSolicitacao.cadastroFuncionarioNome}}
-          </li>
-        </ul>
-      </div>
-    </div>
-  
- 
-    <div class="form-group">
-      <label class="col-md-2 control-label">Data de cadastro</label>
-      <div class="col-md-8">
-        <ul class="list-group">
-          <li class="list-group-item">
-             {{detalheSolicitacao.cadastroData}}
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="form-group" >
-      <label class="col-md-2 control-label">Data de envio para o gestor</label>
-      <div class="col-md-8">
-        <ul class="list-group">
-          <li class="list-group-item">
-             {{detalheSolicitacao.cadastroDataEnvioGestor}}
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="form-group">
-      <label for="CodRequisitante" class="col-md-2 control-label">Situação da Solicitação</label>
-      <div class="col-md-8">
-        <ul class="list-group">
-          <li class="list-group-item">
-            {{detalheSolicitacao.solicitacaoTransporteStatusNome}} 
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-  
-        <div class="row">
-          <div class="col-md-8" style="text-align: center;">
-            <h4>Requisitante</h4>
-          </div>
-        </div>
-  
-        <br style="clear: both;"/>
-  
-        
-        <div class="form-group">
-          <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Requisitante</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                <b>{{detalheSolicitacao.requisitanteUnidadeSigla}}</b> -
-                {{detalheSolicitacao.requisitanteFuncionarioNome}}              
-              </li>
-            </ul>
-          </div>
-        </div>  
-        
-        <div class="form-group">
-          <label for="CodSolServTab" class="col-md-2 control-label">Período</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                Saída: {{detalheSolicitacao.requisitanteDataSaida | date: 'dd/MM/yyyy, h:mm a'}} 
-              </li>
-              <li class="list-group-item">
-                Retorno: {{detalheSolicitacao.requisitanteDataRetorno | date: 'dd/MM/yyyy, h:mm a'}}
-              </li>
-            </ul>
-          </div>
-        </div>   
-  
-        <div class="form-group">
-          <label for="CodSolServTab" class="col-md-2 control-label">Itinerario</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                {{detalheSolicitacao.requisistanteItinerario}}
-              </li>
-            </ul>
-          </div>
-        </div>  
-  
-        <div class="form-group">
-          <label for="CodSolServTab" class="col-md-2 control-label">Descrição do serviço</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                {{detalheSolicitacao.requisitanteServicoDescricao}}
-              </li>
-            </ul>
-          </div>
-        </div> 
-  
-        <div class="form-group">
-          <label for="CodSolServTab" class="col-md-2 control-label">Com motorista</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                {{detalheSolicitacao.requisistanteComMotorista ? "Sim" : "Não"}}
-              </li>
-            </ul>
-          </div>
-        </div> 
-  
-        <div class="form-group">
-          <label for="UndCodTratamento" class="col-md-2 control-label">Passageiros</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let passageiro of detalheSolicitacao.passageiros">
-                             
-                  <b>{{passageiro.passageiroSetorSigla}}</b> -
-                      {{passageiro.passageiroNome}}              
-              </li>
-            </ul>
-          </div>
-        </div>  
-  
-  
-  
-        <div class="row">
-          <div class="col-md-8" style="text-align: center;">
-            <h4>Gestor do Requisitante</h4>
-          </div>
-        </div>
-  
-        <br style="clear: both;"/>  
-  
-        <div class="form-group">
-          <label for="UndCodTratamento" class="col-md-2 control-label">Setor/Gestor Responsável</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                <b>{{detalheSolicitacao.requisitanteGestorUnidadeSigla}}</b> -
-                {{detalheSolicitacao.requisitanteGestorNome}}              
-              </li>
-            </ul>
-          </div>
-        </div>  
-  
-  
-        <div class="form-group">
-          <label for="CodRequisitante" class="col-md-2 control-label">Data de Deliberação</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                {{detalheSolicitacao.requisitanteGestorDeliberacaoData}} 
-              </li>
-            </ul>
-          </div>
-        </div>
-  
-  
-  
-        <div class="row">
-          <div class="col-md-8" style="text-align: center;">
-            <h4>Atendimento</h4>
-          </div>
-        </div>
-  
-        <br style="clear: both;"/>
-  
-  
-        <div class="form-group">
-          <label for="UndCodTratamento" class="col-md-2 control-label">Setor Resonsável pelo Atendimento</label>
-          <div class="col-md-8">
-            <ul class="list-group">
-              <li class="list-group-item">
-                <b>{{detalheSolicitacao.atendimentoUnidadeSigla}}</b> -
-                {{detalheSolicitacao.atendimentoUnidadeDescicao}}              
-              </li>
-            </ul>
-          </div>
-        </div>   -->
-
-        <h3>Deliberação do gestor</h3>
-        <br style="clear: both;"/>
-
+      
+      
+  <div class="card-body">
         <app-template-solicitacao [detalheSolicitacao]="detalheSolicitacao"></app-template-solicitacao>
-
-        <!-- <div class="form-group col-md-8">
-          
-          <div class="float-left">
-            <button  class="btn btn-success" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, true)"  >Aprovar</button >  
-          </div>
-          <div class="float-right">
-              <button  class="btn btn-danger" (click)="setarDeliberacaoGestor(detalheSolicitacao.id,detalheSolicitacao.requisitanteGestorId, false)"  >Cancelar</button >    
-          </div>
-       </div> -->
 
        <div class="form-group row col-md-8">
         <div class="col-md-8">
-          <a class="btn btn-primary" [routerLink]="['/solicitacoes']">Voltar</a>
+          <a class="btn btn-primary" [routerLink]="['/minhas-solicitacoes']">Voltar</a>
         </div>
 
         <div class="col-md-2">
@@ -223,7 +21,7 @@
              
         </div>
      </div>
-       
-          <br style="clear: both;"/>
+  </div>
+</div>
   
 

@@ -11,12 +11,12 @@ import { ListaTransporteComponent } from "./veiculo/listar/listar-veiculo.compon
 
 
 export const rootRouterConfig: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full' },
+    {path: '', redirectTo: 'minhas-solicitacoes', pathMatch: 'full' },
     {path: 'home', component: HomeComponent},
     {path: 'sobre', component: SobreComponent},
     {path: 'conta/login', component: LoginComponent },
     
-    {path: 'solicitacoes', component: ListaTransporteComponent },
+    {path: 'minhas-solicitacoes', component: ListaTransporteComponent },
     {path: 'incluir-solicitacao', component: IncluirSolicitacaoComponent },
     {path: 'detalhe-solicitacao/:Id', component: DetalheTransporteComponent },
     {path: 'gestor-solicitacao-transporte/:Id', component: GestorSolicitacaoTransporteComponent },

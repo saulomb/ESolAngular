@@ -1,17 +1,14 @@
 
-    <div class="row">
-        <div class="col-md-12" style="text-align: center;">
-          <h4>Incluir Solicitação de Veículo</h4>
-        </div>
-    </div>
- 
-          
-
+    <div class="card">
+      <div class="card-header">
+       <h3>Incluir Solicitação de Veículo </h3>
+      </div>
   
+  
+      <div class="card-body">
+ 
         <form novalidate (ngSubmit)="incluirSolicitacao()" [formGroup]="solicitacaoForm">
-        
-          
-          
+
           <div class="form-group row">
             <label class="col-sm-2 col-form-label ">Solicitante</label>
             <div class="col-sm-8">
@@ -45,6 +42,7 @@
                 <option [value]="lotacao?.id" *ngFor="let lotacao of lotacoes" >{{lotacao?.sigla}}</option>
                    
             </select>
+
           </div>
         </div>  
         
@@ -56,25 +54,44 @@
  
                     <option [ngValue]="requisitante?.id" *ngFor="let requisitante of requisitanteFuncionario" >{{requisitante?.nome}}</option>
                 </select>
-              </div>
+              <span class="text-danger" *ngIf="solicitacaoForm.get('solicitacaoRequisitanteId').errors ">
+                <p>Preencha o requisitante </p>
+              </span>
+            </div>
         </div>
         <div class="form-group row">
           <label for="CodSolServTab" class="col-sm-2 col-form-label">Saída</label>    
           <div class="col-sm-4">
-            <input class="form-control"  id="solicitacaoDataSaida"  type="date"  placeholder="Data de saída liberada " formControlName="solicitacaoDataSaida" />
+            <input  class="form-control"  id="solicitacaoDataSaida"  type="date"  placeholder="Data de saída liberada " formControlName="solicitacaoDataSaida" />
+           
+            <span class="text-danger" *ngIf="solicitacaoForm.get('solicitacaoDataSaida').errors ">
+              <p>Data de saída deve ser informada! </p>
+            </span>
           </div>
+
           <div class="col-sm-4">
             <input class="form-control"  id="solicitacaoHoraSaida"  type="time"  placeholder="Data de saída liberada " formControlName="solicitacaoHoraSaida" />
+            <span class="text-danger" *ngIf="solicitacaoForm.get('solicitacaoHoraSaida').errors  ">
+              <p>Hora de saída deve ser informada! </p>
+            </span>
           </div>
+  
         </div>   
 
         <div class="form-group row">
             <label for="CodSolServTab" class="col-sm-2 col-form-label">Retorno</label>    
             <div class="col-sm-4">
               <input class="form-control"  id="solicitacaoDataRetorno"  type="date"  placeholder="Data de saída liberada" formControlName="solicitacaoDataRetorno" />
+              <span class="text-danger" *ngIf="solicitacaoForm.get('solicitacaoDataRetorno').errors ">
+                <p>Data de restorno deve ser informada! </p>
+              </span>
             </div>
+
             <div class="col-sm-4">
               <input class="form-control"  id="solicitacaoHoraRetorno"  type="time"  placeholder="Data de saída liberada "  formControlName="solicitacaoHoraRetorno"/>
+              <span class="text-danger" *ngIf="solicitacaoForm.get('solicitacaoHoraRetorno').errors ">
+                <p>Hora de retorno deve ser informada! </p>
+              </span> 
             </div>
           </div>  
 
@@ -83,6 +100,9 @@
           <label for="solicitacaoItinerario" class="col-md-2 control-label">Itinerario</label>
           <div class="col-sm-8">
             <textarea class="form-control" rows="3" name="solicitacaoItinerario" id="solicitacaoItinerario"  formControlName="solicitacaoItinerario"></textarea>
+            <span class="text-danger" *ngIf="solicitacaoForm.get('solicitacaoItinerario').errors ">
+              <p>Descreva o seu Itinerário</p>
+            </span>
           </div>
         </div>  
 
@@ -90,8 +110,12 @@
             <label for="solicitacaoServicoDescricao" class="col-md-2 control-label">Descrição do serviço</label>
             <div class="col-sm-8">
                 <textarea class="form-control" rows="3" name="solicitacaoServicoDescricao" id="solicitacaoServicoDescricao"  formControlName="solicitacaoServicoDescricao"></textarea>
+                <span class="text-danger" *ngIf="solicitacaoForm.get('solicitacaoServicoDescricao').errors ">
+                  <p>Descreva o serviço à ser executado </p>
+                </span>                
             </div>
-          </div>  
+
+         </div>  
   
           <div class="form-group row">
             <label class="col-md-2 control-label" for="solicitacaoComMotorista">Com Motorista</label>
@@ -118,12 +142,12 @@
             </div>
 
             <div class="col-md-6">
-                <button  type="submit" class="btn btn-success"   >Enviar Solicitação</button >
+                <button  type="submit" class="btn btn-success"  [disabled]="!this.solicitacaoForm.valid"  >Enviar Solicitação</button >
             </div>
 
             <div class="col-md-offset-2">
                 <!-- <button  type="submit" class="btn btn-danger"   >Cancelar Solicitação</button > -->
-                  <a class="btn btn-danger" [routerLink]="['/solicitacoes']">Cancelar Solicitação</a>
+                  <a class="btn btn-danger" [routerLink]="['/minhas-solicitacoes']">Cancelar Solicitação</a>
             </div>
          </div>
     </form>
@@ -182,6 +206,6 @@
               </ul>
             </div>
           </div>  
-    
-
+    </div>
+</div>
 

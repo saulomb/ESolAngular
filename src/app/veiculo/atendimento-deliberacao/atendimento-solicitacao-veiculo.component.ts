@@ -98,7 +98,7 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
       this.transporteServico.atendimentoSolicitacao(this.atendimentoSolicitacao).subscribe({
         next: data => {
             console.log(data);
-            this.router.navigate(['/solicitacoes'])
+            this.router.navigate(['/minhas-solicitacoes'])
         },
         error: error => {
            console.error('There was an error!', error);

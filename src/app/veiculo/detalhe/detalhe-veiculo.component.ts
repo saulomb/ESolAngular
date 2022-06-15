@@ -57,10 +57,10 @@ export class DetalheTransporteComponent  {
     this.transporteServico.enviarSolicitacaoParaGestor(solicitacaoId ).subscribe({
       next: data => {
           console.log(data);
-          this.router.navigate(['/solicitacoes'])
+          this.router.navigate(['/minhas-solicitacoes'])
       },
       error: error => {
-         console.error('There was an error!', error);
+         console.error('Error:', error);
       }
 
     })

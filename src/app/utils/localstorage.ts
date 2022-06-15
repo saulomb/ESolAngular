@@ -17,6 +17,10 @@ export class LocalStorageUtils {
         return JSON.parse(localStorage.getItem('cerb.atendimento'));
     }
 
+    public estaLogado(): boolean{
+        return (this.obterLogin() != null)
+    }
+
     public salvarDadosLocaisUsuario(response:  Usuario) {
 
       //console.log('Token: ',response);

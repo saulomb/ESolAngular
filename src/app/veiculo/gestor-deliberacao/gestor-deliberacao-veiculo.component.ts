@@ -47,7 +47,7 @@ export class GestorSolicitacaoTransporteComponent implements OnInit {
     this.transporteServico.deliberarSolicitacao(solicitacaoId, gestorId, aprovado).subscribe({
       next: data => {
           console.log(data);
-          this.router.navigate(['/solicitacoes'])
+          this.router.navigate(['/minhas-solicitacoes'])
       },
       error: error => {
          console.error('There was an error!', error);

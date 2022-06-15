@@ -7,3 +7,13 @@ export enum SolicitacaoStatus {
     SOLICITACAO_REPROVADA = 8
     
 }
+
+
+export const  SolicitacaoStatusNomeMapeamento : Record<SolicitacaoStatus, string> = {
+    [SolicitacaoStatus.CADASTRO]: "Cadastro",
+    [SolicitacaoStatus.DELIBARACAO_GESTOR]: "Enviado para o gestor requisitante",
+    [SolicitacaoStatus.DELIBARACAO_TRANSPORTE]: "Aguardando deliberação do Transporte",
+    [SolicitacaoStatus.CANCELADO_PELO_GESTOR]: "Cancelado pelo gestor requisitante",
+    [SolicitacaoStatus.SOLICITACAO_APROVADA]: "Solicitação Aprovada",
+    [SolicitacaoStatus.SOLICITACAO_REPROVADA]: "Solicitação Reprovada",
+};

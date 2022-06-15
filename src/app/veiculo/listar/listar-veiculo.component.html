@@ -1,14 +1,34 @@
-<h2>Lista Solicitações de Veículo</h2>
+  <div class="card">
+    <div class="card-header">
+     <h3> Minhas solicitações </h3>
+    </div>
 
-<div class="row " >
-    <div class="form-group col-md-12">
-        <div  class="float-right"> 
+
+    <div class="card-body">
+
+
+      <div class="row justify-content-between ">
+        <div class="col-4">
+            <label> Selecione o status para visualizar as solicitações</label>
+            <div>
+                <select name="solicitacaoRequisitanteUnidadeId" id="solicitacaoRequisitanteUnidadeId" 
+                        class="form-control"  (change)="buscaSolicitacaoPorLotacaoEStatus($event.target.value)">
+                    <option *ngFor="let status of solicitacoesStatus"  [value]="status">  {{solicitacaoStatusNomeMapeamento[status]}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <label></label>
+            <div>
             <a class="btn btn-success" [routerLink]="['/incluir-solicitacao']">Incluir Solicitação</a>
         </div>
-    </div>
-</div>
+            <!-- <div  class="float-right"> 
+                <a class="btn btn-success" [routerLink]="['/incluir-solicitacao']">Incluir Solicitação</a>
+            </div> -->
+        </div>
+      </div>
 
-<div class="row text-center">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -59,5 +79,6 @@
             </tr>
             </tbody>
         </table>
-        </div>
+    </div>
 
+</div>

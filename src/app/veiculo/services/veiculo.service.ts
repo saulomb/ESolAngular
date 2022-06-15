@@ -9,6 +9,7 @@ import { Funcionario } from "../models/funcionario";
 import { IncluirSolicitacao } from "../models/incluirSolicitacao";
 import { BaseService } from "src/app/services/base.service";
 import { transporteSolicitado } from "../models/transporteSolicitado";
+import { SolicitacaoStatus } from "../models/solicitacaoStatus";
 
 
 @Injectable({
@@ -31,7 +32,21 @@ export class VeiculoService extends BaseService {
            
       }
 
+      obterMinhasSolicitacoesPorStatus(status: SolicitacaoStatus): Observable<transporteSolicitado[]> {
+        let usuarioLogado = this.LocalStorage.obterUsuario();
+
+        if (!usuarioLogado.lotacaoFisicaId) return;
+        
+        return this.http.get<transporteSolicitado[]>(this.UrlServiceV1 +"transporte/solicitacoes-por-status/"+usuarioLogado.lotacaoFisicaId.toString()+"/"+status.toString(), this.ObterHeaderJson());
+         
+    }
+
       obterLotacoes(): Observable<Lotacao[]> {
+          
+        return this.http.get<Lotacao[]>(this.UrlServiceV1 +"transporte/lotacoes");
+      }
+
+      obterLotacoesPorGerencia(): Observable<Lotacao[]> {
           
         return this.http.get<Lotacao[]>(this.UrlServiceV1 +"transporte/lotacoes");
       }

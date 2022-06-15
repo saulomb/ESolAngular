@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy  } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/conta/models/usuario';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
@@ -56,16 +56,16 @@ export class IncluirSolicitacaoComponent implements OnInit {
       solicitacaoFuncionarioCadastroId:[this.usuarioLogado.id],
       solicitacaoCadastroFuncionarioNome: [this.usuarioLogado.nome],
       solicitacaoCadastroUnidadeSigla: [this.usuarioLogado.lotacaoFisicaSigla],
-      solicitacaoRequisitanteId: [],
+      solicitacaoRequisitanteId: ['',Validators.required],
       solicitacaoRequisitanteUnidadeId: [this.usuarioLogado.lotacaoFisicaId],
       solicitacaoRequisitanteGestorId: [this.usuarioLogado.gestorResponsavelId],
-      solicitacaoDataSaida: [],
-      solicitacaoDataRetorno: [],
-      solicitacaoHoraSaida: [],
-      solicitacaoHoraRetorno: [],      
-      solicitacaoItinerario: [],
-      solicitacaoServicoDescricao: [],
-      solicitacaoComMotorista: [],
+      solicitacaoDataSaida: ['',Validators.required],
+      solicitacaoDataRetorno: ['',Validators.required],
+      solicitacaoHoraSaida: ['',Validators.required],
+      solicitacaoHoraRetorno: ['',Validators.required],      
+      solicitacaoItinerario: ['',Validators.required],
+      solicitacaoServicoDescricao: ['',Validators.required],
+      solicitacaoComMotorista: [false],
      // solicitacaoPassageiroUnidadeId: [this.usuarioLogado.lotacaoFisicaId],
       
       atendimentoUnidadeResponsavelId: [this.lotacaoAtendimento.id],
@@ -101,29 +101,26 @@ export class IncluirSolicitacaoComponent implements OnInit {
          alert("Você deve incluir o passageiro antes incluir a solicitação!")
          return;
        }
-    
-    
-    this.solicitacao = Object.assign({}, this.solicitacao, this.solicitacaoForm.value);
 
-    //this.solicitacao = new IncluirSolicitacao(this.solicitacaoForm.value);
+    if (this.solicitacaoForm.dirty && this.solicitacaoForm.valid){
+     
+        this.solicitacao = Object.assign({}, this.solicitacao, this.solicitacaoForm.value);
+          
+        console.log("Form: ",this.solicitacaoForm.value);
+        this.solicitacao.passageiros = this.solicitacaoPassageiros;
+        console.log("Model: ",this.solicitacao);
 
+        this.transporteServico.incluirSolicitacao(this.solicitacao).subscribe({
+          next: data => {
+              console.log(data);
+              this.router.navigate(['/minhas-solicitacoes'])
+          },
+          error: error => {
+            console.error(error);
+          }
 
-
-        
-    console.log("Form: ",this.solicitacaoForm.value);
-    this.solicitacao.passageiros = this.solicitacaoPassageiros;
-    console.log("Model: ",this.solicitacao);
-
-    this.transporteServico.incluirSolicitacao(this.solicitacao).subscribe({
-      next: data => {
-          console.log(data);
-          this.router.navigate(['/solicitacoes'])
-      },
-      error: error => {
-         console.error(error);
-      }
-
-    })
+        })
+    }
   
   }
 
