@@ -12,7 +12,14 @@ export interface Usuario {
     perfilGestor: boolean,
     perfilAtendimento: boolean,
     lotacaoAtendimento: Lotacao,
-    podeAprovarAtendimento: boolean 
+    podeAprovarAtendimento: boolean,
+    accessToken: string,
+    claims: Claims[]
+  }
+
+  export interface Claims {
+    value:string,
+    type:string
   }
 
 

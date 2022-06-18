@@ -68,15 +68,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  processarSucesso(response: Usuario){
-    this.usuario = response;
+  processarSucesso(response: any){
+    this.usuario = response.result.userToken;
     this.loginForm.reset();
     this.errors = [];
     
 
     //console.log('response: ', response);
-    this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
+    this.contaService.LocalStorage.salvarDadosLocaisUsuario(response.result.userToken);
     this.contaService.LocalStorage.salvarDadosLocaisAtendimento(this.usuario.lotacaoAtendimento);
+    this.contaService.LocalStorage.salvarTokenUsuario(response.result.accessToken);
 
 
     let toast = this.toastr.success('Login realizado com sucesso','Bem vindo!!!');

@@ -27,8 +27,13 @@ export abstract class BaseService {
     }
 
     protected extractData(response: any) {
-       // return response.data || {};
-       return response || {};
+        return response.data || {};
+       //return response || {};
+    }
+
+    protected extractDataUsuario(response: any) {
+        return response.data.result || {};
+       //return response || {};
     }
 
     protected serviceError(response: Response | any) {

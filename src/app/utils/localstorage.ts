@@ -6,26 +6,26 @@ export class LocalStorageUtils {
 
 
     public obterLogin() : string {
-        return JSON.parse(localStorage.getItem('cerb.login'));
+        return JSON.parse(localStorage.getItem('eSol.login'));
     }
 
     public  obterUsuario() : Usuario {
-        return JSON.parse(localStorage.getItem('cerb.usuario'));
+        return JSON.parse(localStorage.getItem('eSol.usuario'));
     }
 
     public obterLotacaoAtendimento() : Lotacao {
-        return JSON.parse(localStorage.getItem('cerb.atendimento'));
+        return JSON.parse(localStorage.getItem('eSol.atendimento'));
     }
 
     public estaLogado(): boolean{
         return (this.obterLogin() != null)
     }
 
-    public salvarDadosLocaisUsuario(response:  Usuario) {
+    public salvarDadosLocaisUsuario(response:  any) {
 
       //console.log('Token: ',response);
       console.log('Usuario: ', response.login)
-      //this.salvarTokenUsuario(response);
+      this.salvarTokenUsuario(response);
       this.salvarUsuario(response);
     }
 
@@ -39,36 +39,36 @@ export class LocalStorageUtils {
 
     public limparDadosLocaisUsuario() {
         //localStorage.removeItem('cerb.token');
-        localStorage.removeItem('cerb.login');
-        localStorage.removeItem('cerb.lotacaoFisicaId');
-        localStorage.removeItem('cerb.lotacaoFisicaSigla');
-        localStorage.removeItem('cerb.perfilGestor');
-        localStorage.removeItem('cerb.perfilAtendimento');
-        localStorage.removeItem('cerb.usuario');
-        localStorage.removeItem('cerb.atendimento');
+        localStorage.removeItem('eSol.login');
+        localStorage.removeItem('eSol.lotacaoFisicaId');
+        localStorage.removeItem('eSol.lotacaoFisicaSigla');
+        localStorage.removeItem('eSol.perfilGestor');
+        localStorage.removeItem('eSol.perfilAtendimento');
+        localStorage.removeItem('eSol.usuario');
+        localStorage.removeItem('eSol.atendimento');
     }
 
     public obterTokenUsuario(): string {
-        return localStorage.getItem('cerb.token');
+        return localStorage.getItem('eSol.token');
     }
 
     public salvarTokenUsuario(token: string) {
-        localStorage.setItem('cerb.token', token);
+        localStorage.setItem('eSol.token', token);
     }
 
     public salvarUsuario(usuario: Usuario) {
-        localStorage.setItem('cerb.login', JSON.stringify(usuario.login));
-        localStorage.setItem('cerb.nome', JSON.stringify(usuario.nome));
-        localStorage.setItem('cerb.lotacaoFisicaId', JSON.stringify(usuario.lotacaoFisicaId));
-        localStorage.setItem('cerb.lotacaoFisicaSigla', JSON.stringify(usuario.lotacaoFisicaSigla));
-        localStorage.setItem('cerb.perfilGestor', JSON.stringify(usuario.perfilGestor));
-        localStorage.setItem('cerb.perfilAtendimento', JSON.stringify(usuario.perfilAtendimento));
-        localStorage.setItem('cerb.usuario', JSON.stringify(usuario));
+        localStorage.setItem('eSol.login', JSON.stringify(usuario.login));
+        localStorage.setItem('eSol.nome', JSON.stringify(usuario.nome));
+        localStorage.setItem('eSol.lotacaoFisicaId', JSON.stringify(usuario.lotacaoFisicaId));
+        localStorage.setItem('eSol.lotacaoFisicaSigla', JSON.stringify(usuario.lotacaoFisicaSigla));
+        localStorage.setItem('eSol.perfilGestor', JSON.stringify(usuario.perfilGestor));
+        localStorage.setItem('eSol.perfilAtendimento', JSON.stringify(usuario.perfilAtendimento));
+        localStorage.setItem('eSol.usuario', JSON.stringify(usuario));
 
     }
 
     public salvarLotacaoAtendimento(atendimento: Lotacao) {
-        localStorage.setItem('cerb.atendimento', JSON.stringify(atendimento));
+        localStorage.setItem('eSol.atendimento', JSON.stringify(atendimento));
 
     }
 
