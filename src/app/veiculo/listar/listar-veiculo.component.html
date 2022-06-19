@@ -52,7 +52,7 @@
                 <td>{{ solicitacao.id }}</td>
                 <td>{{ solicitacao.solicitanteNome}}</td>
                 <td>{{ solicitacao.solitanteLotacaoNome }}</td>
-                <td>{{ solicitacao.dataCadastro }}</td>
+                <td>{{ solicitacao.dataCadastro  | date: 'dd/MM/yyyy, h:mm a'}}</td>
                 <!-- <td>{{ solicitacao.parecer }}</td> -->
                 <td>{{ solicitacao.lotacaoTratamentoNome }}</td> 
                 <td>{{ solicitacao.solicitanteTratamentoNome}}</td>        

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import {HttpClient, HttpParams } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from "rxjs";
 
 import { Lotacao } from "../models/lotacao";
@@ -30,7 +30,7 @@ export class VeiculoService extends BaseService {
           if (!usuarioLogado.lotacaoFisicaId) return;
           
           return  this.http.get<transporteSolicitado[]>
-                  (this.UrlServiceV1 +"transporte/solicitacoes-por-lotacao/"+usuarioLogado.lotacaoFisicaId.toString(), this.ObterHeaderJson())
+                  (this.UrlServiceV1 +"transporte/solicitacoes-por-lotacao/"+usuarioLogado.lotacaoFisicaId.toString(), this.ObterAuthHeaderJson())
                   .pipe(
                     map(super.extractData),
                     catchError(super.serviceError))
@@ -42,7 +42,7 @@ export class VeiculoService extends BaseService {
         if (!usuarioLogado.lotacaoFisicaId) return;
         
         return this.http.get<transporteSolicitado[]>
-              (this.UrlServiceV1 +"transporte/solicitacoes-por-status/"+usuarioLogado.lotacaoFisicaId.toString()+"/"+status.toString(), this.ObterHeaderJson())
+              (this.UrlServiceV1 +"transporte/solicitacoes-por-status/"+usuarioLogado.lotacaoFisicaId.toString()+"/"+status.toString(), this.ObterAuthHeaderJson())
               .pipe(
                 map(super.extractData),
                 catchError(super.serviceError))
@@ -51,7 +51,8 @@ export class VeiculoService extends BaseService {
 
       obterLotacoes(): Observable<Lotacao[]> {
           
-        return  this.http.get<Lotacao[]>(this.UrlServiceV1 +"transporte/lotacoes")
+        return  this.http.get<Lotacao[]>
+                (this.UrlServiceV1 +"transporte/lotacoes",  this.ObterAuthHeaderJson())
                 .pipe(
                   map(super.extractData),
                   catchError(super.serviceError))
@@ -59,7 +60,7 @@ export class VeiculoService extends BaseService {
 
       obterLotacoesPorGerencia(): Observable<Lotacao[]> {
           
-        return  this.http.get<Lotacao[]>(this.UrlServiceV1 +"transporte/lotacoes")
+        return  this.http.get<Lotacao[]>(this.UrlServiceV1 +"transporte/lotacoes", this.ObterAuthHeaderJson())
                 .pipe(
                   map(super.extractData),
                   catchError(super.serviceError))
@@ -67,7 +68,7 @@ export class VeiculoService extends BaseService {
 
       obterDetalheSolicitacao(solicitacaoId: number): Observable<DetalheSolicitacao> {
             
-        return  this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/"+solicitacaoId.toString(), this.ObterHeaderJson())
+        return  this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao/"+solicitacaoId.toString(), this.ObterAuthHeaderJson())
                 .pipe(
                   map(super.extractData),
                   catchError(super.serviceError))
@@ -75,7 +76,7 @@ export class VeiculoService extends BaseService {
 
       obterFuncionarioPorLotacao(lotacaoId: number): Observable<Funcionario[]> {
             
-        return  this.http.get<Funcionario[]>(this.UrlServiceV1 +"transporte/funcionario-por-lotacao/"+lotacaoId.toString(), this.ObterHeaderJson())
+        return  this.http.get<Funcionario[]>(this.UrlServiceV1 +"transporte/funcionario-por-lotacao/"+lotacaoId.toString(), this.ObterAuthHeaderJson())
                 .pipe(
                   map(super.extractData),
                   catchError(super.serviceError))
@@ -83,7 +84,7 @@ export class VeiculoService extends BaseService {
 
       obterFuncionarioPorId(lotacaoId: number): Observable<Funcionario> {
             
-        return  this.http.get<Funcionario>(this.UrlServiceV1 +"transporte/funcionario/"+lotacaoId.toString(), this.ObterHeaderJson())
+        return  this.http.get<Funcionario>(this.UrlServiceV1 +"transporte/funcionario/"+lotacaoId.toString(), this.ObterAuthHeaderJson())
                 .pipe(
                   map(super.extractData),
                   catchError(super.serviceError))
@@ -97,19 +98,30 @@ export class VeiculoService extends BaseService {
 
           console.log(queryParams);
 
-          return  this.http.post(this.UrlServiceV1 +"transporte/deliberar-solicitacao",null,  { params: queryParams })
+
+           return  this.http.post(this.UrlServiceV1 +"transporte/deliberar-solicitacao",null, this.ObterAuthHeaderJson(queryParams))
                   .pipe(
                     map(super.extractData),
                     catchError(super.serviceError))
+
+                    // return  this.http.post(this.UrlServiceV1 +"transporte/deliberar-solicitacao",null,  {params: queryParams } )
+                    // .pipe(
+                    //   map(super.extractData),
+                    //   catchError(super.serviceError))
        
       }
 
       enviarSolicitacaoParaGestor(solicitacaoId: number)  {
         
         const queryParams = new HttpParams()
-          .set('solicitacaoId', solicitacaoId.toString())
+          .set('solicitacaoId', solicitacaoId.toString());
+
+          let httpOptions = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this.LocalStorage.obterTokenUsuario()}`,
+        });  
         
-        return  this.http.post(this.UrlServiceV1 +"transporte/enviar-solicitacao-gestor",null,  { params: queryParams })
+        return  this.http.post(this.UrlServiceV1 +"transporte/enviar-solicitacao-gestor",null, this.ObterAuthHeaderJson(queryParams))
                 .pipe(
                   map(super.extractData),
                   catchError(super.serviceError));
@@ -118,7 +130,7 @@ export class VeiculoService extends BaseService {
 
       atendimentoSolicitacao(atendimento: AtendimentoSolicitacao)  {
 
-        return  this.http.post(this.UrlServiceV1 +"transporte/atendimento-solicitacao/",atendimento)
+        return  this.http.post(this.UrlServiceV1 +"transporte/atendimento-solicitacao/",atendimento, this.ObterAuthHeaderJson())
                 .pipe(
                   map(super.extractData),
                   catchError(super.serviceError));
@@ -127,7 +139,7 @@ export class VeiculoService extends BaseService {
 
     incluirSolicitacao(solicitacao: IncluirSolicitacao)  {
 
-      return  this.http.post(this.UrlServiceV1 +"transporte/incluir-solicitacao/",solicitacao)
+      return  this.http.post(this.UrlServiceV1 +"transporte/incluir-solicitacao/",solicitacao, this.ObterAuthHeaderJson())
               .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));

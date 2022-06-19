@@ -1,4 +1,4 @@
-import { HttpHeaders, HttpErrorResponse } from "@angular/common/http";
+import { HttpHeaders, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { throwError } from "rxjs";
 import { environment } from 'src/environments/environment';
 import { LocalStorageUtils } from '../utils/localstorage';
@@ -17,13 +17,28 @@ export abstract class BaseService {
         };
     }
 
-    protected ObterAuthHeaderJson() {
-        return {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.LocalStorage.obterTokenUsuario()}`
-            })
-        };
+    protected ObterAuthHeaderJson(httpParams: HttpParams = null) {
+        
+       let httpHeaders =  new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.LocalStorage.obterTokenUsuario()}`
+        });
+
+        if (httpParams != null)
+             return { headers: httpHeaders, params: httpParams };
+        else 
+            return { headers: httpHeaders};
+
+
+
+        // return {
+        //     headers: new HttpHeaders({
+        //         'Content-Type': 'application/json',
+        //         'Authorization': `Bearer ${this.LocalStorage.obterTokenUsuario()}`
+        //     }), params: httpParams
+        // };
+
+
     }
 
     protected extractData(response: any) {
