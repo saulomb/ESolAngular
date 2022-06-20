@@ -11,7 +11,7 @@ import { ListaTransporteComponent } from "./veiculo/listar/listar-veiculo.compon
 
 
 export const rootRouterConfig: Routes = [
-    {path: '', redirectTo: 'minhas-solicitacoes', pathMatch: 'full' },
+    {path: '', redirectTo: 'home', pathMatch: 'full' },
     {path: 'home', component: HomeComponent},
     {path: 'sobre', component: SobreComponent},
     {path: 'conta/login', component: LoginComponent },
