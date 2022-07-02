@@ -16,11 +16,13 @@ export class ListaTransporteComponent implements OnInit {
 
   
   public solicitacoes: transporteSolicitado[];
+  public solicitacaoStatusSelecionado: SolicitacaoStatus;
 
   private localStorageUtils = new LocalStorageUtils();
 
   public solicitacaoStatusNomeMapeamento = SolicitacaoStatusNomeMapeamento;
   public solicitacoesStatus = Object.values(SolicitacaoStatus).filter(Number);
+  
 
 
   constructor(
@@ -43,18 +45,27 @@ export class ListaTransporteComponent implements OnInit {
     
     console.log("Array status:", this.solicitacoesStatus)
     this.buscaSolicitacaoPorLotacaoEStatus(SolicitacaoStatus.CADASTRO);
+    
   }
 
 
   buscaSolicitacaoPorLotacaoEStatus(status: SolicitacaoStatus){
+    this.solicitacaoStatusSelecionado =  status;
+    this.mudarStatus(status);
     this.transporteServico.obterMinhasSolicitacoesPorStatus(status)
     .subscribe(
       solicitacoes =>{
         this.solicitacoes = solicitacoes;
+        
         console.log("Solicitacoes por status:",solicitacoes);
       },
       error=>console.log(error)
     );
+  }
+
+  mudarStatus(event: SolicitacaoStatus){
+    this.solicitacaoStatusSelecionado =  event;
+
   }
 
 

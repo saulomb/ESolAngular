@@ -1,0 +1,51 @@
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Solicitante</th>
+            <th scope="col">Setor Solicitante</th>
+            <th scope="col">Data de cadastro</th>
+            <!-- <th scope="col">Parecer</th> -->
+            <th scope="col">Setor Atendimento</th>
+            <th scope="col">Deliberado por</th>      
+            <!-- <th scope="col">Código do Status</th> -->
+            <th scope="col">Nome do Status</th>
+            <th scope="col" colspan="4">Ação</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            
+        
+            <tr *ngFor="let solicitacao of solicitacoes">
+                <td>{{ solicitacao.id }}</td>
+                <td>{{ solicitacao.solicitanteNome}}</td>
+                <td>{{ solicitacao.solitanteLotacaoNome }}</td>
+                <td>{{ solicitacao.dataCadastro  | date: 'dd/MM/yyyy, h:mm a'}}</td>
+                <!-- <td>{{ solicitacao.parecer }}</td> -->
+                <td>{{ solicitacao.lotacaoTratamentoNome }}</td> 
+                <td>{{ solicitacao.solicitanteTratamentoNome}}</td>        
+                <!-- <td>{{ solicitacao.solicitacaoStatus }}</td>  -->
+                <td>{{ solicitacao.solicitacaoStatusNome }}</td> 
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/detalhe-solicitacao', solicitacao.id]">
+                        <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    </button>
+                    <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
+                </td>
+                <td>
+                    <button class="btn btn-warning" [hidden]="solicitacao.solicitacaoStatus != 2"  [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">
+                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                    </button>
+                    <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
+                </td>
+                <td>
+                    <button class="btn btn-secondary" [hidden]="solicitacao.solicitacaoStatus != 3" [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                    </button>
+                    <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
+                </td>                
+            </tr>
+            </tbody>
+        </table>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router"
 import { LoginComponent } from "./conta/login/login.component";
 import { SobreComponent } from "./institucional/sobre/sobre.component";
 import { HomeComponent } from "./navegacao/home/home.component";
+import { NotFoundComponent } from "./navegacao/not-found/not-found.component";
 import { AtendimentoSolicitacaoTransporteComponent } from "./veiculo/atendimento-deliberacao/atendimento-solicitacao-veiculo.component";
 import { DetalheTransporteComponent } from "./veiculo/detalhe/detalhe-veiculo.component";
 import { GestorSolicitacaoTransporteComponent } from "./veiculo/gestor-deliberacao/gestor-deliberacao-veiculo.component";
@@ -11,7 +12,7 @@ import { ListaTransporteComponent } from "./veiculo/listar/listar-veiculo.compon
 
 
 export const rootRouterConfig: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full' },
+    {path: '', redirectTo: 'minhas-solicitacoes', pathMatch: 'full' },
     {path: 'home', component: HomeComponent},
     {path: 'sobre', component: SobreComponent},
     {path: 'conta/login', component: LoginComponent },
@@ -21,6 +22,9 @@ export const rootRouterConfig: Routes = [
     {path: 'detalhe-solicitacao/:Id', component: DetalheTransporteComponent },
     {path: 'gestor-solicitacao-transporte/:Id', component: GestorSolicitacaoTransporteComponent },
     {path: 'gestor-atendimento-transporte/:Id', component: AtendimentoSolicitacaoTransporteComponent },
+    
+    
+    {path:"**", component: NotFoundComponent}
 ];
 
 @NgModule({

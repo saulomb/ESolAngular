@@ -17,3 +17,4 @@ export const  SolicitacaoStatusNomeMapeamento : Record<SolicitacaoStatus, string
     [SolicitacaoStatus.SOLICITACAO_APROVADA]: "Solicitação Aprovada",
     [SolicitacaoStatus.SOLICITACAO_REPROVADA]: "Solicitação Reprovada",
 };
+
