@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -39,6 +39,14 @@ import { MenuLoginComponent } from './navegacao/menu-login/menu-login.component'
 import { TemplateListaSolicitacaoComponent } from './veiculo/template-lista-solicitacao/templante-lista-solicitacao.component';
 import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 
+import { ErrorInterceptor } from './services/error.handler.service';
+import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
+
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+];
+
+
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
   declarations: [
@@ -56,7 +64,8 @@ registerLocaleData(localePt, 'pt-BR');
     TemplateListaSolicitacaoComponent,
     MenuLoginComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AcessoNegadoComponent
 
     
   ],
@@ -70,17 +79,24 @@ registerLocaleData(localePt, 'pt-BR');
     ToastrModule.forRoot(),
     [RouterModule.forRoot(rootRouterConfig, { useHash: false})],
     
+    
   ],
 
   exports:[
     NotFoundComponent
   ],
+ 
+ 
   providers: [
     VeiculoService,
     ContaService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }  ,
-    {provide: APP_BASE_HREF, useValue: '/'}
-    ],
-  bootstrap: [AppComponent]
+    {provide: APP_BASE_HREF, useValue: '/'},
+    httpInterceptorProviders
+
+  ],
+  bootstrap: [AppComponent],     
+
+  
 })
 export class AppModule { }

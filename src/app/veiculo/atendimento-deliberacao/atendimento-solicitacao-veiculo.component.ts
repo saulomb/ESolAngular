@@ -48,7 +48,7 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
     const userId = 646;
     
  
-     this.transporteServico.obterDetalheSolicitacao(solicitacaoId)
+     this.transporteServico.obterDetalheSolicitacaoAtendimento(solicitacaoId)
      .subscribe(
        detalheSolicitacao =>{
          this.detalheSolicitacao = detalheSolicitacao;

@@ -74,6 +74,14 @@ export class VeiculoService extends BaseService {
                   catchError(super.serviceError))
       }
 
+      obterDetalheSolicitacaoAtendimento(solicitacaoId: number): Observable<DetalheSolicitacao> {
+            
+        return  this.http.get<DetalheSolicitacao>(this.UrlServiceV1 +"transporte/detalhe-solicitacao-atendimento/"+solicitacaoId.toString(), this.ObterAuthHeaderJson())
+                .pipe(
+                  map(super.extractData),
+                  catchError(super.serviceError))
+      }
+
       obterFuncionarioPorLotacao(lotacaoId: number): Observable<Funcionario[]> {
             
         return  this.http.get<Funcionario[]>(this.UrlServiceV1 +"transporte/funcionario-por-lotacao/"+lotacaoId.toString(), this.ObterAuthHeaderJson())
