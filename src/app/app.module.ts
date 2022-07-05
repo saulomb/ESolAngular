@@ -36,6 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './conta/login/login.component';
 import { ContaService } from './conta/services/conta.service';
 import { MenuLoginComponent } from './navegacao/menu-login/menu-login.component';
+import { TemplateListaSolicitacaoComponent } from './veiculo/template-lista-solicitacao/templante-lista-solicitacao.component';
+import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 
 registerLocaleData(localePt, 'pt-BR');
 @NgModule({
@@ -51,8 +53,10 @@ registerLocaleData(localePt, 'pt-BR');
     AtendimentoSolicitacaoTransporteComponent,
     IncluirSolicitacaoComponent,
     TemplateSolicitacaoComponent,
+    TemplateListaSolicitacaoComponent,
     MenuLoginComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent
 
     
   ],
@@ -66,6 +70,10 @@ registerLocaleData(localePt, 'pt-BR');
     ToastrModule.forRoot(),
     [RouterModule.forRoot(rootRouterConfig, { useHash: false})],
     
+  ],
+
+  exports:[
+    NotFoundComponent
   ],
   providers: [
     VeiculoService,
