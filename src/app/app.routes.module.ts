@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router" 
+import { AcessoNegadoComponent } from "./acesso-negado/acesso-negado.component";
 import { LoginComponent } from "./conta/login/login.component";
 import { SobreComponent } from "./institucional/sobre/sobre.component";
 import { HomeComponent } from "./navegacao/home/home.component";
@@ -22,6 +23,9 @@ export const rootRouterConfig: Routes = [
     {path: 'detalhe-solicitacao/:Id', component: DetalheTransporteComponent },
     {path: 'gestor-solicitacao-transporte/:Id', component: GestorSolicitacaoTransporteComponent },
     {path: 'gestor-atendimento-transporte/:Id', component: AtendimentoSolicitacaoTransporteComponent },
+
+    { path: 'acesso-negado', component: AcessoNegadoComponent },
+    { path: 'nao-encontrado', component: NotFoundComponent },
     
     
     {path:"**", component: NotFoundComponent}

@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/conta/models/usuario';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { Funcionario } from '../models/funcionario';
@@ -37,7 +38,8 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
   constructor(private transporteServico: VeiculoService,
     private router:Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -78,12 +80,14 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
     //this.passageiroSelecinadoId = this.usuarioLogado.lotacaoFisicaId;
 
+
+
     this.transporteServico.obterLotacoes()
           .subscribe(
             lotacoes =>{
               this.lotacoes = lotacoes;
               this.lotacoesPassageiro = lotacoes;
-              console.log("Carregando lotações:",lotacoes);
+              //console.log("Carregando lotações:",lotacoes);
             },
             error=>console.log(error)
             
@@ -112,11 +116,18 @@ export class IncluirSolicitacaoComponent implements OnInit {
 
         this.transporteServico.incluirSolicitacao(this.solicitacao).subscribe({
           next: data => {
-              console.log(data);
-              this.router.navigate(['/minhas-solicitacoes'])
+              //console.log(data);
+              //this.router.navigate(['/minhas-solicitacoes'])
+              let toast = this.toastr.success('Solicitação incluída com sucesso!');
+              if (toast){
+                toast.onHidden.subscribe(()=>{
+                  this.router.navigate(['/minhas-solicitacoes']);
+                })
+              }
           },
           error: error => {
             console.error(error);
+            this.toastr.error(error.toString());
           }
 
         })

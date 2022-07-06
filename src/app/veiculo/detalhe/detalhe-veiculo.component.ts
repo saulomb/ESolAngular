@@ -1,5 +1,6 @@
 import { Component  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DetalheSolicitacao } from '../models/detalheSolicitacao';
 import { VeiculoService } from '../services/veiculo.service';
 
@@ -18,7 +19,8 @@ export class DetalheTransporteComponent  {
   constructor(
               private transporteServico: VeiculoService,
               private activeRouter: ActivatedRoute,
-              private router:Router) {  }
+              private router:Router,
+              private toastr: ToastrService) {  }
 
   
 
@@ -56,11 +58,19 @@ export class DetalheTransporteComponent  {
     
     this.transporteServico.enviarSolicitacaoParaGestor(solicitacaoId ).subscribe({
       next: data => {
-          console.log(data);
-          this.router.navigate(['/minhas-solicitacoes'])
+          //console.log(data);
+          //this.router.navigate(['/minhas-solicitacoes'])
+          let toast = this.toastr.success('Solicitação enviada para o gestor com sucesso!');
+          
+          if (toast){
+            toast.onHidden.subscribe(()=>{
+              this.router.navigate(['/minhas-solicitacoes']);
+            })
+          }
       },
       error: error => {
          console.error('Error:', error);
+         this.toastr.error('Ocorreu um erro ao efetuar o envio para o gestor, por favor tente mais tarde!');
       }
 
     })

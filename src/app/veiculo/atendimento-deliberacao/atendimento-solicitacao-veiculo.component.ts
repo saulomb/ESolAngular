@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AtendimentoSolicitacao } from '../models/atendimentoSolicitacao';
 import { DetalheSolicitacao } from '../models/detalheSolicitacao';
 
@@ -25,7 +26,8 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
   constructor(private transporteServico: VeiculoService,
     private activeRoute: ActivatedRoute,
     private router:Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private toastr: ToastrService) { }
 
 
     
@@ -97,8 +99,15 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
 
       this.transporteServico.atendimentoSolicitacao(this.atendimentoSolicitacao).subscribe({
         next: data => {
-            console.log(data);
-            this.router.navigate(['/minhas-solicitacoes'])
+            //console.log(data);
+            //this.router.navigate(['/minhas-solicitacoes'])
+            let toast = this.toastr.success('Deliberação concluída com sucesso!');
+          
+            if (toast){
+              toast.onHidden.subscribe(()=>{
+                this.router.navigate(['/minhas-solicitacoes']);
+              })
+            }
         },
         error: error => {
            console.error('There was an error!', error);

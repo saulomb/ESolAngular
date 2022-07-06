@@ -71,14 +71,6 @@ export abstract class BaseService {
             return throwError(customResponse);
         }
 
-        if (response.status === 401) {
-            customError.push("Você não tem permissão para efetuar esssa ação!");
-
-            
-            // A lista de erros do HttpErrorResponse é readonly
-            customResponse.error.errors = customError;
-            return throwError(customResponse);
-        }
 
         console.error(response);
         return throwError(response);

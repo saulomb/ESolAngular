@@ -21,6 +21,8 @@ export class ErrorInterceptor implements HttpInterceptor {
 
             if (error instanceof HttpErrorResponse) {
 
+                console.log("Erro status no interceptor:" , error.status)
+
                 if (error.status === 401) {
                     this.localStorageUtil.limparDadosLocaisUsuario();
                     this.router.navigate(['/conta/login'], { queryParams: { returnUrl: this.router.url }});
