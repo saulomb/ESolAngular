@@ -42,6 +42,7 @@ import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 import { ErrorInterceptor } from './services/error.handler.service';
 import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
 
+
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 ];

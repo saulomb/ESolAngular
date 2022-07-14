@@ -22,7 +22,10 @@ export const rootRouterConfig: Routes = [
     {path: 'incluir-solicitacao', component: IncluirSolicitacaoComponent },
     {path: 'detalhe-solicitacao/:Id', component: DetalheTransporteComponent },
     {path: 'gestor-solicitacao-transporte/:Id', component: GestorSolicitacaoTransporteComponent },
-    {path: 'gestor-atendimento-transporte/:Id', component: AtendimentoSolicitacaoTransporteComponent },
+    {
+        path: 'gestor-atendimento-transporte/:Id', component: AtendimentoSolicitacaoTransporteComponent,
+        data: [{ claim: { nome: 'Solicitacao', valor: 'Atendimento'}}]
+    },
 
     { path: 'acesso-negado', component: AcessoNegadoComponent },
     { path: 'nao-encontrado', component: NotFoundComponent },

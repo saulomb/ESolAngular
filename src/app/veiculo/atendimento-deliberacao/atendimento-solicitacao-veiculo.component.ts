@@ -101,7 +101,7 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
         next: data => {
             //console.log(data);
             //this.router.navigate(['/minhas-solicitacoes'])
-            let toast = this.toastr.success('Deliberação concluída com sucesso!');
+            let toast = this.toastr.success('Deliberação do atendimento concluída com sucesso!');
           
             if (toast){
               toast.onHidden.subscribe(()=>{
@@ -110,7 +110,8 @@ export class AtendimentoSolicitacaoTransporteComponent implements OnInit {
             }
         },
         error: error => {
-           console.error('There was an error!', error);
+           console.error('Erro ao efetuar deliberação', error);
+           this.toastr.error('Ocorreu um erro ao efetuar a deliberação, por favor tente mais tarde!');
         }
   
       })

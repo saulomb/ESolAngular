@@ -42,15 +42,24 @@
 
 
               <ul class="navbar-nav flex-grow-1">
-                  <!-- <li class="nav-item">
-                      <a class="nav-link text-dark" [routerLink]="['/home']">Home</a>
-                  </li> -->
+             
                   <li class="nav-item">
                       <a class="nav-link text-dark" [routerLink]="['/minhas-solicitacoes']">Minhas Solicitações</a>
                   </li>
                   <li class=" nav-item ">
                       <a class="nav-link text-dark " [routerLink]="['/sobre']">Sobre</a>
                   </li>
+                  <li ngbDropdown class="nav-item">
+                    <a href (click)="false" class="nav-link" ngbDropdownToggle>Solicitação</a>
+                    <div ngbDropdownMenu>
+                      <a ngbDropdownItem [routerLink]="['/minhas-solicitacoes']">Minhas Solicitaões</a>
+                      <button ngbDropdownItem>Another action</button>
+                      <button ngbDropdownItem>Something else here</button>
+                      <div class="dropdown-divider"></div>
+                      <button ngbDropdownItem>Separated link</button>
+                    </div>
+                  </li>
+
               </ul>
           </div>
       </div>
