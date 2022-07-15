@@ -4,6 +4,7 @@ import { transporteSolicitado } from '../models/transporteSolicitado';
 import { SolicitacaoStatus, SolicitacaoStatusNomeMapeamento } from '../models/solicitacaoStatus';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/conta/models/usuario';
 
 
 @Component({
@@ -19,6 +20,8 @@ export class TemplateListaSolicitacaoComponent implements OnInit, OnChanges {
   public solicitacoes: transporteSolicitado[];
 
   private localStorageUtils = new LocalStorageUtils();
+
+  public usuario: Usuario; 
 
   public solicitacaoStatusNomeMapeamento = SolicitacaoStatusNomeMapeamento;
   public solicitacoesStatus = Object.values(SolicitacaoStatus).filter(Number);
@@ -36,6 +39,8 @@ export class TemplateListaSolicitacaoComponent implements OnInit, OnChanges {
     console.log("Dados do login:",this.localStorageUtils.obterLogin());
     console.log("Se esta logado:",this.localStorageUtils.estaLogado());
     
+    
+    this.usuario = this.localStorageUtils.obterUsuario()
     
     console.log("Array status:", this.solicitacoesStatus)
     this.buscaSolicitacaoPorLotacaoEStatus(this.solicitacaoStatus);

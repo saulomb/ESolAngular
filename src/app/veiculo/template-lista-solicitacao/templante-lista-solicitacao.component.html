@@ -35,13 +35,13 @@
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <button class="btn btn-warning" [hidden]="solicitacao.solicitacaoStatus != 2"  [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">
+                    <button class="btn btn-warning" [hidden]="solicitacao.solicitacaoStatus != 2 || !usuario.perfilGestor"  [routerLink]="['/gestor-solicitacao-transporte', solicitacao.id]">
                         <i class="fa fa-address-book" aria-hidden="true"></i>
                     </button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
                 </td>
                 <td>
-                    <button class="btn btn-secondary" [hidden]="solicitacao.solicitacaoStatus != 3" [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">
+                    <button class="btn btn-secondary" [hidden]="solicitacao.solicitacaoStatus != 3 || !usuario.perfilAtendimento " [routerLink]="['/gestor-atendimento-transporte', solicitacao.id]">
                         <i class="fa fa-car" aria-hidden="true"></i>
                     </button>
                     <!-- <a class="btn btn-primary" [routerLink]="['/detalhe-solicitacao']">Detalhe</a> -->
